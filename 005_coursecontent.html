@@ -1,0 +1,2478 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+	<title>AMOL: Adaptive Physics</title>
+	<meta http-equiv="content-type" content="text/html;charset=UTF-8">
+	<!-- set this first before the course content does so it doesn't prematurly render the page causing HTML to load before CSS is applied -->
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+
+
+
+	<!-- Bootstrap -->
+	<link href="http://nsf2.intelladapt.com//templates/bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen">
+	<link href="//code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" rel="stylesheet" media="screen">
+	<link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
+
+	<!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+	<!--[if lt IE 9]>
+	<script src="http://nsf2.intelladapt.com//templates/bootstrap/js/html5shiv.js"></script>
+	<script src="http://nsf2.intelladapt.com//templates/bootstrap/js/respond.min.js"></script>
+	<![endif]-->
+
+	<style type="text/css">
+	/*********************************************************************/
+	/* Sticky Footer */
+	/*********************************************************************/
+	html, body {
+		height: 100%;
+	}
+	body {
+		/* Fix row padding offset for fluid sites */
+		padding: 0 15px;
+	}
+	label {
+		cursor: pointer;
+	}
+	/* Wrapper for page content to push down footer */
+	#wrap {
+		min-height: 100%;
+		height: auto !important;
+		height: 100%;
+		/* Negative indent footer by its height */
+		margin: 0 auto -60px;
+		/* Pad bottom by footer height */
+		padding: 70px 0 70px;
+	}
+	/* Set the fixed height of the footer here */
+	#footer {
+		background-color: #f5f5f5;
+	}
+	#footer .container {
+		padding-top: 20px;
+	}
+	#footer {
+		background-color: #20272E;
+	}
+	/*********************************************************************/
+	/* Custom CSS */
+	/*********************************************************************/
+	@media(min-width:992px), @media(min-width:1200px) {
+		#wrap, #hite_content, #hite_content_inner {
+			display: flex;
+			display: -webkit-flex;
+			display: -ms-flex;
+		}
+		#wrap {
+			flex-direction: column;
+			-webkit-flex-direction: column;
+		}
+		#hite_content, #hite_content_inner, #right_pane {
+			flex: 1 1 auto;
+			-webkit-flex: 1 1 auto;
+			-ms-flex: 1 1 auto;
+		}
+	}
+	#hite_content_inner {
+		margin: 0 auto;
+	}
+	.page-header {
+		position: relative;
+	}
+	.page-header, .page-header h1 {
+		margin-top: 0;
+	}
+	#student-analytic-dashboard .row, .student-analytic-dashboard .row {
+		padding: 15px;
+	}
+	#student-analytic-dashboard .col-md-4, #student-analytic-dashboard .col-md-6, .student-analytic-dashboard .col-md-4, .student-analytic-dashboard .col-md-6 {
+		padding: 0;
+	}
+	#data-display-toggle, .data-display-toggle, .report_tables {
+		display: none;
+	}
+	.report_tables {
+		background: #FFF;
+		border: 3px solid #4572A7;
+		-webkit-border-radius: 7px;
+		-moz-border-radius: 7px;
+		border-radius: 7px;
+		margin: 0 0.5em 0 0.5em;
+	}
+	.report_tables h3 {
+		margin: 0.5em;
+		padding: 0;
+		font-size: 1.25em;
+		font-weight: bold;
+		text-align: center;
+	}
+	.report_tables table {
+		width: 75%;
+		margin: 1em;
+	}
+	.report_tables table th {
+		font-weight: bold;
+		text-transform: capitalize;
+		min-width: 25%;
+		border: 1px solid #000;
+	}
+	.report_tables table td {
+		border: 1px solid #000;
+	}
+	.report_tables table td.col1 {
+		text-transform: capitalize;
+	}
+	iframe {
+		width: 100%;
+		overflow: hidden;
+	}
+	.nav-main-col {
+		max-width: 100%;
+		margin: 0 auto;
+	}
+	.nav-main-col li a {
+		padding-left: 5px !important;
+		padding-right: 5px !important;
+	}
+	#current-learning-strategy strong {
+		letter-spacing: 2px;
+		text-transform: uppercase;
+	}
+	#toc-accordion {
+		padding-bottom: 10px;
+	}
+	.main-col {
+		max-width: 1024px;
+	}
+	#right_pane {
+		background-color: #fefefe;
+		box-shadow: 0px 0px 5px #999;
+		padding-top: 5px;
+	}
+	.panel-body-toc {
+		padding-left: 0px;
+		padding-right: 0px;
+	}
+	.panel-body-toc ul li.active a {
+		background-color: #678AAC !important;
+	}
+	#pagination, #course_pathways {
+		display: none;
+	}
+	.quiz-question img, .quiz-question > label {
+		display: block;
+	}
+	#remedial-pathway, .learning-style {
+		text-transform: capitalize;
+	}
+	#pagination .pagination-hide, #mpagination .pagination-hide {
+		display: none;
+	}
+	#pagination {
+		padding-right: 5px;
+	}
+	.tab-buffer {
+		margin-bottom: 10px;
+	}
+	#glossary .modal-dialog {
+		width: 900px;
+	}
+	#login-marketing {
+		background-image: url('http://nsf2.intelladapt.com//templates/bootstrap/images/nsf-login.jpg');
+		background-position: top left;
+		padding-left: 30px;
+	}
+	#login-marketing h3 {
+		color: #9ABDDF !important;
+		text-shadow: 2px 2px 1px #000;
+		padding-top: 0;
+		margin-top: 0
+	}
+	#login-marketing small {
+		color: #FFF !important;
+	}
+	.modal-backdrop {
+		background-color: #000;
+		background-color: rgba(0, 0, 0, 0.90);
+	}
+	li.hiddenformooc {
+		display: none;
+	}
+	.course-list dt {
+		width: 50%;
+		text-align: left;
+	}
+	.course-list dd {
+		width: 50%;
+		margin-left: 50%;
+		text-align: right;
+	}
+	.openanswer {
+		width: 130px;
+		display: inline-block;
+	}
+	.quiz-question ol * {
+		font-weight: 400 !important;
+	}
+	.quiz-question-control p {
+		margin-top: -6px;
+	}
+	.quiz-result-chart {
+		margin-left: auto;
+		margin-right: auto;
+	}
+	#iframe-modal .modal-dialog {
+		width: 940px;
+	}
+	#iframe-modal #iframe-cont {
+		overflow: hidden;
+	}
+	#avatar_helper {
+		position: fixed;
+		/* It's possible this could become hairy to keep track of */
+		bottom: 10px;
+		/* 60px for footer - (20+2+10+18)px for transcript button */
+		left: 0px;
+		text-align: center;
+		cursor: pointer;
+	}
+	#avatar_helper #avatar_helper_btn_bg {
+		background: #20272E;
+	}
+	#avatar_helper #avatar_helper_video {
+		width: 180px;
+		height: 200px;
+	}
+	.chartholder {
+		text-align:center;
+	}
+	#activity-pagination {
+		text-align:center;
+		padding-top:1em;
+	}
+	.pagination>li>a {
+		padding: 6px 7px;
+	}
+	.quiz-page-done {
+		font-size: 0.5em;
+	}
+	.report-content table caption {
+		visibility: hidden;
+	}
+	#reports-progress ul {
+		list-style-type: none;
+		padding-top: 0.4em;
+		padding-bottom: 0.4em;
+	}
+	#reports-progress .course-progress {
+		width: 300px;
+		margin-bottom: 0.5em;
+		margin-right: 1em;
+		vertical-align: bottom;
+		display: inline-block;
+	}
+	#reports-progress .panel-collapse ul {
+		padding-left: 0.2em;
+	}
+	#reports-progress .led {
+		width: 10px;
+		height: 10px;
+		margin: 6px;
+	}
+	#reports-progress #taskkey:before {
+		content:'Legend: ';
+	}
+	#reports-progress #taskkey {
+		text-align: center;
+		padding: 1em;
+	}
+	#reports-progress #taskkey li {
+		display: inline;
+	}
+	.needanswer {
+		background: #d9edf7;
+		border: 1px solid #fbeed5;
+		border-radius: 1em;
+		margin-left: 0.25em;
+		margin-right: 0.25em;
+	}
+	#nsf-report-table {
+		/*height: 300px;
+			overflow: auto;*/
+	}
+	#nsf-report-table table {
+		width: 100%;
+	}
+	#nsf-report-table td, #nsf-report-table th {
+		text-align: center;
+		border: 1px solid #000;
+	}
+	#nsf-report-table .even {
+		background: #FFF;
+	}
+	#nsf-report-table .odd {
+		background: #DDD;
+	}
+	/**/
+	#nsf-report-table .highlight_1.even {
+		background: #FFC7CE;
+	}
+	#nsf-report-table .highlight_1.odd {
+		background: #DDAFB5;
+	}
+	/**/
+	#nsf-report-table .highlight_2.even {
+		background: #FFEB9C;
+	}
+	#nsf-report-table .highlight_2.odd {
+		background: #DDCB89;
+	}
+	/**/
+	#nsf-report-table .highlight_3.even {
+		background: #A9D08E;
+	}
+	#nsf-report-table .highlight_3.odd {
+		background: #8EAD77;
+	}
+	/**/
+	#nsf-report-table .highlight_4.even {
+		background: #ADD8FF;
+	}
+	#nsf-report-table .highlight_4.odd {
+		background: #96BCDD;
+	}
+	.last-name-filter-highlight {
+		color: red;
+		font-weight: bold;
+	}
+	#QUESTION_CONTENT iframe {
+		width: auto;
+	}
+	.postauthor h4 {
+		margin-top: 0;
+		text-transform: capitalize;
+	}
+	.ucform fieldset legend {
+		display: none;
+	}
+	#accordion-assignment-users .panel-title a, .sidebar_buttons a {
+		display: block;
+	}
+	#accordion-assignment-users .panel-title .led {
+		vertical-align: baseline;
+		margin-right: 0.5em;
+	}
+	#accordion-assignment-users .panel-title .item-avatar {
+		vertical-align: top;
+	}
+	#accordion-assignment-users .panel-title .progress-block {
+		font-size: 0.9em;
+		color: #999;
+	}
+	#accordion-assignment-users .panel-title .progress {
+		display: inline-block;
+		width: 10em;
+		margin-bottom: 0em;
+		vertical-align: bottom;
+	}
+	.assignment-buttons {
+		text-align: center;
+	}
+	.assignment-buttons li {
+		margin-bottom: 0.5em;
+	}
+	.assignment-buttons li .btn-half {
+		width: 40%;
+	}
+	.assignment-buttons li .btn-full {
+		width: 80%;
+	}
+	.datetimepicker.form-control {
+		background-color: #FFF;
+		cursor: default;
+	}
+	@media all and (max-width: 991px) {
+		#avatar_helper {
+			display: none;
+		}
+	}
+	.col-padding {
+		padding: 0.5em;
+	}
+	#left_pane {
+		max-height: inherit;
+	}
+	.navbar-toggle {
+		color: #fff;
+	}
+	.navbar-text {
+		margin-bottom: 0px;
+	}
+	@media (max-width:767px) {
+		#wrap {
+			/*padding: 60px 0 45px;*/
+		}
+		.container {
+			padding:0;
+		}
+		#right_pane {
+			box-shadow:none;
+			padding:0.75em;
+		}
+		body {
+			background-color: #fefefe;
+		}
+	}
+	.goog-te-banner-frame, .goog-tooltip {
+		visibility: hidden !important;
+		display: none !important;
+	}
+	.goog-text-highlight {
+		background-color: transparent !important;
+		box-shadow: none !important;
+	}
+	#main-nav-container.navbar-collapse.in {
+		overflow-y: visible;
+	}
+	@media (max-width:992px) {
+		#main-nav-container.navbar-collapse.in, #main-nav-container.navbar-collapse.collapsing {
+			float: none !important;
+		}
+	}
+	#mobile-pagination-container:hover {
+		background: transparent;
+	}
+	#mobile-pagination-container .hidden-on-mobile {
+		display: none;
+	}
+	#mobile-pagination-container {
+		padding: 0px;
+		margin-top: 0px;
+		margin-bottom: 0px;
+		border: 0px;
+	}
+	#mpagination p {
+		display: inline;
+		padding-right: 0.1em;
+		vertical-align: middle;
+	}
+	.navbar-brand {
+		padding: 15px 7px;
+	}
+	.useravatar {
+		height: 128px;
+	}
+	</style>
+
+	<style id="dynamic-style">
+
+	</style>
+</head>
+
+<body>
+
+	<!-- START acheivments MODAL -->
+	<script>
+	setTimeout(function() {
+		$('#modal-achievements').modal('show');
+	}, 500);
+	</script>
+	<style>
+	.modal-lg {
+		max-width: 900px;
+	}
+	@media (max-width: 768px) {
+		.modal-lg {
+			width: 95%;
+			/* magic number */
+		}
+	}
+	@media (min-width: 992px) {
+		.modal-lg {
+			width: 900px;
+		}
+	}
+	</style>
+	<div class="modal fade" id="modal-achievements" tabindex="-1" role="dialog" aria-labelledby="iframe-modal-title">
+		<div class="modal-dialog modal-lg">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+					<h4 id="iframe-modal-title" class="modal-title">Acheivments</h4>
+				</div>
+				<div class="modal-body">
+
+					<div class="row">
+						<div class="col-md-12">
+							<style>
+							.LSlist {
+								list-style-type: none;
+								position: relative;
+								overflow: auto;
+								margin: 0 0 0 0;
+								padding: 0px 0px;
+								background-color: white;
+								font-weight: 700;
+								border: 1px solid #5285A6;
+								text-align:center;
+							}
+							.LSlist LI {
+								position: relative;
+								display:inline-block;
+								zoom: 1;
+								margin: 3px;
+								padding: 0 .5em;
+								height: 176px;
+								width: 176px;
+								border: 1px rgba(0, 0, 0, .1) solid;
+								border-color:black;
+								-webkit-border-radius: 1em;
+								-moz-border-radius: 1em;
+								border-radius: .75em;
+								margin-left: 12px;
+								background: #DDD;
+								/*background-color: rgba(240, 225, 155, 1);*/
+								text-align: center;
+								text-indent:0;
+							}
+							.LSlist .LS_app {
+								border-color:rgba(137, 137, 137, .5);
+								/*grey*/
+								background-color:rgba(137, 137, 137, .25);
+							}
+							.LSlist .LS_inc {
+								border-color:rgba(137, 255, 137, .5);
+								/*green*/
+								background-color:rgba(137, 255, 137, .25);
+							}
+							.LSlist .LS_ind {
+								border-color:rgba(200, 200, 255, .75);
+								/*blue*/
+								background-color:rgba(200, 200, 255, .5);
+							}
+							.LSlist .LS_ded {
+								border-color:rgba(255, 171, 255, .5);
+								/*magenta*/
+								background-color:rgba(255, 171, 255, .25);
+							}
+							.LSlist .LS_dis {
+								border-color:rgba(255, 185, 185, .75);
+								/*red*/
+								background-color:rgba(255, 185, 185, .5);
+							}
+							.LSlist .selected {
+								-webkit-box-shadow: inset 0px 0px 8px 1px #ffff00;
+								/* Android 2.3+, iOS 4.0.2-4.2, Safari 3-4 */
+								box-shadow: inset 0px 0px 8px 1px #ffff00;
+								/* Chrome 6+, Firefox 4+, IE 9+, iOS 5+, Opera 10.50+ */
+							}
+							</style>
+							<ul class="LSlist">
+								<li class="LS_app">apprentice</li>
+								<!-- class=selected should be determined/added/removed by the backend -->
+								<li class="LS_inc">incidental</li>
+								<li class="LS_ind">inductive</li>
+								<li class="LS_ded selected">deductive</li>
+								<li class="LS_dis">discovery</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-default" data-link-to="welcome-page">What's this?</button>
+					<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- END acheivments MODAL -->
+
+
+
+
+
+	<div id="wrap">
+		<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+			<div class="nav-main-col">
+				<!-- Brand and toggle get grouped for better mobile display -->
+				<div class="navbar-header">
+					<div id="mobile-pagination-container" class="navbar-toggle"></div>
+
+					<a class="navbar-brand" href="index.php"><span class="glyphicon glyphicon-home"></span></a>
+
+					<button style='float: left; margin-left: 0.2em' id="left-list-toggle" type="button" class="navbar-toggle" data-toggle="collapse" data-target="#left_pane" title="Open course table of contents">
+			<span class="glyphicon glyphicon-list"></span>
+		</button>
+					<button style='float: left' type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse" title="Open secondary navigation items (including learning strategy selector)">
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+	  </button>
+
+
+
+
+				</div>
+
+				<!-- Collect the nav links, forms, and other content for toggling -->
+				<div id="main-nav-container" class="pull-left collapse navbar-collapse navbar-ex1-collapse">
+					<ul id="main-nav" class="nav navbar-nav navbar-left">
+
+						<li class=""><a href="index.php?page=usercorner&course_id=1472&subpage=overview"><span class="glyphicon glyphicon-dashboard"></span> Student Corner</a>
+						</li>
+
+						<li class="active"><a href="course.php?course_id=1472"><span class="glyphicon glyphicon-briefcase"></span> Adaptive Course</a>
+						</li>
+
+
+						<li class="dropdown">
+							<a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-user"></span> Student <b class="caret"></b></a>
+							<ul class="dropdown-menu">
+								<li><a href="#"><span class="glyphicon glyphicon-book"></span> My Courses</a>
+								</li>
+								<li><a href="#"><span class="glyphicon glyphicon-cog"></span> My Profile</a>
+								</li>
+								<li><a href="#modal-achievements" title="Achievements" data-toggle="modal"><span class="glyphicon glyphicon glyphicon-star"></span> My Acheivments</a>
+								</li>
+								<li><a href="#"><span class="glyphicon glyphicon-question-sign"></span> Help</a>
+								</li>
+
+
+								<li><a href="#" target="_blank"><span class="glyphicon glyphicon-exclamation-sign"></span> Quick Start Guide</a>
+								</li>
+
+								<li><a href="#"><span class="glyphicon glyphicon-bullhorn"></span> Contact Us</a>
+								</li>
+								<li><a href="#" onClick="signOut()"><span class="glyphicon glyphicon-off"></span> Logout</a>
+								</li>
+							</ul>
+						</li>
+					</ul>
+				</div>
+				<!-- /.navbar-collapse -->
+
+				<div id="main-pagination-container" class="collapse navbar-collapse">
+				</div>
+			</div>
+		</nav>
+
+
+		<div id="hite_content" class="row">
+			<div id="hite_content_inner" class="container main-col">
+
+
+				<div id='left_pane' class="col-md-3 collapse navbar-collapse">
+
+					<div class="panel-group" id="toc-accordion">
+
+						<div class="panel panel-primary">
+							<div class="panel-heading">
+								<h4 class="panel-title">
+									<a data-toggle="collapse" data-parent="#toc-accordion" href="#toc-topic-p363d45a4b85f7c7f2e926289023e56e9">
+          1.0 Kinematics
+        </a>
+								</h4>
+							</div>
+							<div id="toc-topic-p363d45a4b85f7c7f2e926289023e56e9" class="panel-collapse collapse in">
+								<div class="panel-body panel-body-toc">
+									<ul class="nav nav-pills nav-stacked">
+
+
+
+										<li class="active"><a href="course.php?course_id=1472&objective_refid=od953e7539ac5381fa430b48c1f04098b&topic_refid=pc6ff3ee590be82df0cb5a3c84ec8c2da&synaptic_pathway=deductive&page_number=1&pages_to_capture=1" onClick="return gotoCoursePage(this)">Topics and Applications</a>
+										</li>
+
+
+
+
+
+										<li><a href="course.php?course_id=1472&objective_refid=od953e7539ac5381fa430b48c1f04098b&topic_refid=p680c66cc6acc4282845b7a11fc99ca04&synaptic_pathway=deductive&page_number=1&pages_to_capture=1" onClick="return gotoCoursePage(this)">Conventions</a>
+										</li>
+
+
+
+
+
+										<li><a href="course.php?course_id=1472&objective_refid=od953e7539ac5381fa430b48c1f04098b&topic_refid=p41915a2def780cdd5d8abd357ac18185&synaptic_pathway=deductive&page_number=1&pages_to_capture=1" onClick="return gotoCoursePage(this)">Equations of Motion</a>
+										</li>
+
+
+
+
+
+										<li><a href="course.php?course_id=1472&objective_refid=od953e7539ac5381fa430b48c1f04098b&topic_refid=p8cf829d118c17b21f4f0c4352bfe04cb&synaptic_pathway=deductive&page_number=1&pages_to_capture=1" onClick="return gotoCoursePage(this)">One Dimensional Motion</a>
+										</li>
+
+
+
+
+
+										<li><a href="course.php?course_id=1472&objective_refid=od953e7539ac5381fa430b48c1f04098b&topic_refid=pa1ba6a2d880269621336e975263ee3b3&synaptic_pathway=deductive&page_number=1&pages_to_capture=1" onClick="return gotoCoursePage(this)">Two Dimensional Motion</a>
+										</li>
+
+
+
+
+
+										<li><a href="course.php?course_id=1472&objective_refid=od953e7539ac5381fa430b48c1f04098b&topic_refid=p45109af18224fe56a0c17273caab9d45&synaptic_pathway=deductive&page_number=1&pages_to_capture=1" onClick="return gotoCoursePage(this)">Projectile Motion</a>
+										</li>
+
+
+
+
+										<li class="divider"></li>
+										<li><a href='course.php?course_id=1472&objective_refid=od953e7539ac5381fa430b48c1f04098b&topic_refid=p363d45a4b85f7c7f2e926289023e56e9&remediation_type=normal&show_quiz'><span class="glyphicon glyphicon-check"></span> Take Practice Quiz</a>
+										</li>
+
+
+
+
+									</ul>
+								</div>
+							</div>
+						</div>
+
+						<div class="panel panel-primary">
+							<div class="panel-heading">
+								<h4 class="panel-title">
+									<a data-toggle="collapse" data-parent="#toc-accordion" href="#toc-topic-pe47ca600e111bbfbbdb2de708197e4c3">
+          1.0 Assessment
+        </a>
+								</h4>
+							</div>
+							<div id="toc-topic-pe47ca600e111bbfbbdb2de708197e4c3" class="panel-collapse collapse ">
+								<div class="panel-body panel-body-toc">
+									<ul class="nav nav-pills nav-stacked">
+
+
+
+										<li><a href="course.php?course_id=1472&objective_refid=od953e7539ac5381fa430b48c1f04098b&topic_refid=pb9f5d5ed705874cb3dadab9642c897d1&synaptic_pathway=deductive&page_number=1&pages_to_capture=1" onClick="return gotoCoursePage(this)">1.1 Assessment</a>
+										</li>
+
+
+
+
+										<li class="divider"></li>
+										<li><a href='course.php?course_id=1472&objective_refid=od953e7539ac5381fa430b48c1f04098b&topic_refid=pe47ca600e111bbfbbdb2de708197e4c3&remediation_type=normal&show_quiz'><span class="glyphicon glyphicon-check"></span> Take Assessment</a>
+										</li>
+
+
+
+
+									</ul>
+								</div>
+							</div>
+						</div>
+
+					</div>
+
+					<div class="panel-group" id="toc-accordion">
+
+						<div class="panel panel-primary">
+							<div class="panel-heading">
+								<h4 class="panel-title">
+									<a data-toggle="collapse" data-parent="#toc-accordion" href="#toc-topic-p58eed4f872199db5e91ab36644150ebc">
+          2.0  Newton's Laws
+        </a>
+								</h4>
+							</div>
+							<div id="toc-topic-p58eed4f872199db5e91ab36644150ebc" class="panel-collapse collapse ">
+								<div class="panel-body panel-body-toc">
+									<ul class="nav nav-pills nav-stacked">
+
+
+
+										<li><a href="course.php?course_id=1472&objective_refid=o2cffc792b26fc97b28bc3185315b1794&topic_refid=pc30b8d76f495c00c42041fe3d1327ed1&synaptic_pathway=deductive&page_number=1&pages_to_capture=1" onClick="return gotoCoursePage(this)">Newton's First Law of Motion</a>
+										</li>
+
+
+
+
+
+										<li><a href="course.php?course_id=1472&objective_refid=o2cffc792b26fc97b28bc3185315b1794&topic_refid=p17149ca04f95cd78f2e8c16e595432bb&synaptic_pathway=deductive&page_number=1&pages_to_capture=1" onClick="return gotoCoursePage(this)">Newton's Second Law of Motion</a>
+										</li>
+
+
+
+
+
+										<li><a href="course.php?course_id=1472&objective_refid=o2cffc792b26fc97b28bc3185315b1794&topic_refid=p03d2f7cccfd1a5831192466c0d84404f&synaptic_pathway=deductive&page_number=1&pages_to_capture=1" onClick="return gotoCoursePage(this)">Newton's Third Law of Motion</a>
+										</li>
+
+
+
+
+
+										<li><a href="course.php?course_id=1472&objective_refid=o2cffc792b26fc97b28bc3185315b1794&topic_refid=pbba80cf0049249471f351dd77bc08dc2&synaptic_pathway=deductive&page_number=1&pages_to_capture=1" onClick="return gotoCoursePage(this)">Static Systems</a>
+										</li>
+
+
+
+
+
+										<li><a href="course.php?course_id=1472&objective_refid=o2cffc792b26fc97b28bc3185315b1794&topic_refid=p9c7652f5eb581d11370a3d273b3696d6&synaptic_pathway=deductive&page_number=1&pages_to_capture=1" onClick="return gotoCoursePage(this)">Dynamic Systems</a>
+										</li>
+
+
+
+
+
+										<li><a href="course.php?course_id=1472&objective_refid=o2cffc792b26fc97b28bc3185315b1794&topic_refid=p2cc63ea68647d256e3f38b1fea018810&synaptic_pathway=deductive&page_number=1&pages_to_capture=1" onClick="return gotoCoursePage(this)">Using Newton's Laws</a>
+										</li>
+
+
+
+
+										<li class="divider"></li>
+										<li><a href='course.php?course_id=1472&objective_refid=o2cffc792b26fc97b28bc3185315b1794&topic_refid=p58eed4f872199db5e91ab36644150ebc&remediation_type=normal&show_quiz'><span class="glyphicon glyphicon-check"></span> Take Practice Quiz</a>
+										</li>
+
+
+
+
+									</ul>
+								</div>
+							</div>
+						</div>
+
+						<div class="panel panel-primary">
+							<div class="panel-heading">
+								<h4 class="panel-title">
+									<a data-toggle="collapse" data-parent="#toc-accordion" href="#toc-topic-pd562765b864be2d484abb55d9ffc6a07">
+          2.0 Assessment
+        </a>
+								</h4>
+							</div>
+							<div id="toc-topic-pd562765b864be2d484abb55d9ffc6a07" class="panel-collapse collapse ">
+								<div class="panel-body panel-body-toc">
+									<ul class="nav nav-pills nav-stacked">
+
+
+
+										<li><a href="course.php?course_id=1472&objective_refid=o2cffc792b26fc97b28bc3185315b1794&topic_refid=p66d6319ee6cff10bcb0db27aeb042768&synaptic_pathway=deductive&page_number=1&pages_to_capture=1" onClick="return gotoCoursePage(this)">1.2 Assessment</a>
+										</li>
+
+
+
+
+										<li class="divider"></li>
+										<li><a href='course.php?course_id=1472&objective_refid=o2cffc792b26fc97b28bc3185315b1794&topic_refid=pd562765b864be2d484abb55d9ffc6a07&remediation_type=normal&show_quiz'><span class="glyphicon glyphicon-check"></span> Take Assessment</a>
+										</li>
+
+
+
+
+									</ul>
+								</div>
+							</div>
+						</div>
+
+					</div>
+
+					<div class="panel-group" id="toc-accordion">
+
+						<div class="panel panel-primary">
+							<div class="panel-heading">
+								<h4 class="panel-title">
+									<a data-toggle="collapse" data-parent="#toc-accordion" href="#toc-topic-pa71ce0fae5ce0c4bd11ff3eb135776ab">
+          3.0 Work, Energy, and Power
+        </a>
+								</h4>
+							</div>
+							<div id="toc-topic-pa71ce0fae5ce0c4bd11ff3eb135776ab" class="panel-collapse collapse ">
+								<div class="panel-body panel-body-toc">
+									<ul class="nav nav-pills nav-stacked">
+
+
+
+										<li><a href="course.php?course_id=1472&objective_refid=o0214d3580a6ec6fde656c80a658ad357&topic_refid=p1eb520fbd14958ce7d6e28a3af1f3c43&synaptic_pathway=deductive&page_number=1&pages_to_capture=1" onClick="return gotoCoursePage(this)">Work</a>
+										</li>
+
+
+
+
+
+										<li><a href="course.php?course_id=1472&objective_refid=o0214d3580a6ec6fde656c80a658ad357&topic_refid=pc236d546b1dbf44e1a545ad2c2478a33&synaptic_pathway=deductive&page_number=1&pages_to_capture=1" onClick="return gotoCoursePage(this)">Work-Energy Theorem</a>
+										</li>
+
+
+
+
+
+										<li><a href="course.php?course_id=1472&objective_refid=o0214d3580a6ec6fde656c80a658ad357&topic_refid=p46980efc7d2597ce56ddc54605471962&synaptic_pathway=deductive&page_number=1&pages_to_capture=1" onClick="return gotoCoursePage(this)">Work and Power</a>
+										</li>
+
+
+
+
+
+										<li><a href="course.php?course_id=1472&objective_refid=o0214d3580a6ec6fde656c80a658ad357&topic_refid=p85898338259db4aa8e292210be120984&synaptic_pathway=deductive&page_number=1&pages_to_capture=1" onClick="return gotoCoursePage(this)">Work and Gravity</a>
+										</li>
+
+
+
+
+
+										<li><a href="course.php?course_id=1472&objective_refid=o0214d3580a6ec6fde656c80a658ad357&topic_refid=pd9e9e9eb29244819707c24c37982604a&synaptic_pathway=deductive&page_number=1&pages_to_capture=1" onClick="return gotoCoursePage(this)">Total Mechanical Energy</a>
+										</li>
+
+
+
+
+
+										<li><a href="course.php?course_id=1472&objective_refid=o0214d3580a6ec6fde656c80a658ad357&topic_refid=p66c17d97ae889ab5bdaf8484989a6650&synaptic_pathway=deductive&page_number=1&pages_to_capture=1" onClick="return gotoCoursePage(this)">Springs and Energy</a>
+										</li>
+
+
+
+
+										<li class="divider"></li>
+										<li><a href='course.php?course_id=1472&objective_refid=o0214d3580a6ec6fde656c80a658ad357&topic_refid=pa71ce0fae5ce0c4bd11ff3eb135776ab&remediation_type=normal&show_quiz'><span class="glyphicon glyphicon-check"></span> Take Practice Quiz</a>
+										</li>
+
+
+
+
+									</ul>
+								</div>
+							</div>
+						</div>
+
+						<div class="panel panel-primary">
+							<div class="panel-heading">
+								<h4 class="panel-title">
+									<a data-toggle="collapse" data-parent="#toc-accordion" href="#toc-topic-p65fbe19010896c5ae77ad8716998069a">
+          3.0 Assessment
+        </a>
+								</h4>
+							</div>
+							<div id="toc-topic-p65fbe19010896c5ae77ad8716998069a" class="panel-collapse collapse ">
+								<div class="panel-body panel-body-toc">
+									<ul class="nav nav-pills nav-stacked">
+
+
+
+										<li><a href="course.php?course_id=1472&objective_refid=o0214d3580a6ec6fde656c80a658ad357&topic_refid=p2cb037a1fc9047632bf47d94d3795d12&synaptic_pathway=deductive&page_number=1&pages_to_capture=1" onClick="return gotoCoursePage(this)">2.1 Assessment</a>
+										</li>
+
+
+
+
+										<li class="divider"></li>
+										<li><a href='course.php?course_id=1472&objective_refid=o0214d3580a6ec6fde656c80a658ad357&topic_refid=p65fbe19010896c5ae77ad8716998069a&remediation_type=normal&show_quiz'><span class="glyphicon glyphicon-check"></span> Take Assessment</a>
+										</li>
+
+
+
+
+									</ul>
+								</div>
+							</div>
+						</div>
+
+					</div>
+
+					<div class="panel-group" id="toc-accordion">
+
+						<div class="panel panel-primary">
+							<div class="panel-heading">
+								<h4 class="panel-title">
+									<a data-toggle="collapse" data-parent="#toc-accordion" href="#toc-topic-pb61c01510f1ea045710761e6c964abfc">
+          4.0 Impulse and Momentum
+        </a>
+								</h4>
+							</div>
+							<div id="toc-topic-pb61c01510f1ea045710761e6c964abfc" class="panel-collapse collapse ">
+								<div class="panel-body panel-body-toc">
+									<ul class="nav nav-pills nav-stacked">
+
+
+
+										<li><a href="course.php?course_id=1472&objective_refid=of85a660d18e04993843773f745ec79b2&topic_refid=pd3042210878dba6125c5c86203e4cb5a&synaptic_pathway=deductive&page_number=1&pages_to_capture=1" onClick="return gotoCoursePage(this)">Center of Mass </a>
+										</li>
+
+
+
+
+
+										<li><a href="course.php?course_id=1472&objective_refid=of85a660d18e04993843773f745ec79b2&topic_refid=p9fe9e9c585b670b5e3bd36c9cbb7d647&synaptic_pathway=deductive&page_number=1&pages_to_capture=1" onClick="return gotoCoursePage(this)">Impulse and Momentum</a>
+										</li>
+
+
+
+
+
+										<li><a href="course.php?course_id=1472&objective_refid=of85a660d18e04993843773f745ec79b2&topic_refid=pa1c5a89e789b08b6ceac76ba651853d0&synaptic_pathway=deductive&page_number=1&pages_to_capture=1" onClick="return gotoCoursePage(this)">Momentum and Force</a>
+										</li>
+
+
+
+
+
+										<li><a href="course.php?course_id=1472&objective_refid=of85a660d18e04993843773f745ec79b2&topic_refid=pde5f90b847c62c99dc5a43f393a682f7&synaptic_pathway=deductive&page_number=1&pages_to_capture=1" onClick="return gotoCoursePage(this)">Elastic and Inelastic Collisions</a>
+										</li>
+
+
+
+
+
+										<li><a href="course.php?course_id=1472&objective_refid=of85a660d18e04993843773f745ec79b2&topic_refid=pa48dd7768799334f41a706642cd40d21&synaptic_pathway=deductive&page_number=1&pages_to_capture=1" onClick="return gotoCoursePage(this)">1D Conservation of Momentum</a>
+										</li>
+
+
+
+
+
+										<li><a href="course.php?course_id=1472&objective_refid=of85a660d18e04993843773f745ec79b2&topic_refid=p4fe3ffc0364b6d858c84a457f2e7c2be&synaptic_pathway=deductive&page_number=1&pages_to_capture=1" onClick="return gotoCoursePage(this)">2D Conservation of Momentum</a>
+										</li>
+
+
+
+
+										<li class="divider"></li>
+										<li><a href='course.php?course_id=1472&objective_refid=of85a660d18e04993843773f745ec79b2&topic_refid=pb61c01510f1ea045710761e6c964abfc&remediation_type=normal&show_quiz'><span class="glyphicon glyphicon-check"></span> Take Practice Quiz</a>
+										</li>
+
+
+
+
+									</ul>
+								</div>
+							</div>
+						</div>
+
+						<div class="panel panel-primary">
+							<div class="panel-heading">
+								<h4 class="panel-title">
+									<a data-toggle="collapse" data-parent="#toc-accordion" href="#toc-topic-p1df41d3720ad890511578343e2a2ccb8">
+          4.0 Assessment
+        </a>
+								</h4>
+							</div>
+							<div id="toc-topic-p1df41d3720ad890511578343e2a2ccb8" class="panel-collapse collapse ">
+								<div class="panel-body panel-body-toc">
+									<ul class="nav nav-pills nav-stacked">
+
+
+
+										<li><a href="course.php?course_id=1472&objective_refid=of85a660d18e04993843773f745ec79b2&topic_refid=p4669dd07d32af00d8d0a4e63f8d5b030&synaptic_pathway=deductive&page_number=1&pages_to_capture=1" onClick="return gotoCoursePage(this)">2.2 Assessment</a>
+										</li>
+
+
+
+
+										<li class="divider"></li>
+										<li><a href='course.php?course_id=1472&objective_refid=of85a660d18e04993843773f745ec79b2&topic_refid=p1df41d3720ad890511578343e2a2ccb8&remediation_type=normal&show_quiz'><span class="glyphicon glyphicon-check"></span> Take Assessment</a>
+										</li>
+
+
+
+
+									</ul>
+								</div>
+							</div>
+						</div>
+
+					</div>
+
+					<div class="panel-group" id="toc-accordion">
+
+						<div class="panel panel-primary">
+							<div class="panel-heading">
+								<h4 class="panel-title">
+									<a data-toggle="collapse" data-parent="#toc-accordion" href="#toc-topic-p697bce86a5876cfe516b32d189c7fe4e">
+          5.0 Circular Motion and Torque
+        </a>
+								</h4>
+							</div>
+							<div id="toc-topic-p697bce86a5876cfe516b32d189c7fe4e" class="panel-collapse collapse ">
+								<div class="panel-body panel-body-toc">
+									<ul class="nav nav-pills nav-stacked">
+
+
+
+										<li><a href="course.php?course_id=1472&objective_refid=o3695907c0b0f99b1269da4b6a89c93b9&topic_refid=pdae0e1fe581ff67c051298b443d0685d&synaptic_pathway=deductive&page_number=1&pages_to_capture=1" onClick="return gotoCoursePage(this)">Principles of Torque</a>
+										</li>
+
+
+
+
+
+										<li><a href="course.php?course_id=1472&objective_refid=o3695907c0b0f99b1269da4b6a89c93b9&topic_refid=p9a5f35ce2f61ed7bd42e0bc3126419ca&synaptic_pathway=deductive&page_number=1&pages_to_capture=1" onClick="return gotoCoursePage(this)">Principles of Circular Motion</a>
+										</li>
+
+
+
+
+
+										<li><a href="course.php?course_id=1472&objective_refid=o3695907c0b0f99b1269da4b6a89c93b9&topic_refid=p05f8f4841584768e44f127e1253c8ca0&synaptic_pathway=deductive&page_number=1&pages_to_capture=1" onClick="return gotoCoursePage(this)">Newton's Laws and Circular Motion</a>
+										</li>
+
+
+
+
+
+										<li><a href="course.php?course_id=1472&objective_refid=o3695907c0b0f99b1269da4b6a89c93b9&topic_refid=pfe58bfdaef931e2e561ff1a5b69df170&synaptic_pathway=deductive&page_number=1&pages_to_capture=1" onClick="return gotoCoursePage(this)">Circular Motion and Conservation of Energy</a>
+										</li>
+
+
+
+
+
+										<li><a href="course.php?course_id=1472&objective_refid=o3695907c0b0f99b1269da4b6a89c93b9&topic_refid=pec99e1eae805cb2a02a4ccb97aa4335f&synaptic_pathway=deductive&page_number=1&pages_to_capture=1" onClick="return gotoCoursePage(this)">Angular Mechanics and Moment of Inertia</a>
+										</li>
+
+
+
+
+
+										<li><a href="course.php?course_id=1472&objective_refid=o3695907c0b0f99b1269da4b6a89c93b9&topic_refid=pcfb04b18def5e3c6da8b67d159d4bc43&synaptic_pathway=deductive&page_number=1&pages_to_capture=1" onClick="return gotoCoursePage(this)">Angular Mechanics of an Object Moving</a>
+										</li>
+
+
+
+
+										<li class="divider"></li>
+										<li><a href='course.php?course_id=1472&objective_refid=o3695907c0b0f99b1269da4b6a89c93b9&topic_refid=p697bce86a5876cfe516b32d189c7fe4e&remediation_type=normal&show_quiz'><span class="glyphicon glyphicon-check"></span> Take Practice Quiz</a>
+										</li>
+
+
+
+
+									</ul>
+								</div>
+							</div>
+						</div>
+
+						<div class="panel panel-primary">
+							<div class="panel-heading">
+								<h4 class="panel-title">
+									<a data-toggle="collapse" data-parent="#toc-accordion" href="#toc-topic-p37c58072afe00c07638d4ed80e9ce087">
+          5.0 Assessment
+        </a>
+								</h4>
+							</div>
+							<div id="toc-topic-p37c58072afe00c07638d4ed80e9ce087" class="panel-collapse collapse ">
+								<div class="panel-body panel-body-toc">
+									<ul class="nav nav-pills nav-stacked">
+
+
+
+										<li><a href="course.php?course_id=1472&objective_refid=o3695907c0b0f99b1269da4b6a89c93b9&topic_refid=p194833d60dec4a1a802263afc294d8d1&synaptic_pathway=deductive&page_number=1&pages_to_capture=1" onClick="return gotoCoursePage(this)">3.1 Assessment</a>
+										</li>
+
+
+
+
+										<li class="divider"></li>
+										<li><a href='course.php?course_id=1472&objective_refid=o3695907c0b0f99b1269da4b6a89c93b9&topic_refid=p37c58072afe00c07638d4ed80e9ce087&remediation_type=normal&show_quiz'><span class="glyphicon glyphicon-check"></span> Take Assessment</a>
+										</li>
+
+
+
+
+									</ul>
+								</div>
+							</div>
+						</div>
+
+					</div>
+
+					<div class="panel-group" id="toc-accordion">
+
+						<div class="panel panel-primary">
+							<div class="panel-heading">
+								<h4 class="panel-title">
+									<a data-toggle="collapse" data-parent="#toc-accordion" href="#toc-topic-p0bdd7cef985e8e362abe72a15da4a1c6">
+          6.0 Oscillations and Gravitation
+        </a>
+								</h4>
+							</div>
+							<div id="toc-topic-p0bdd7cef985e8e362abe72a15da4a1c6" class="panel-collapse collapse ">
+								<div class="panel-body panel-body-toc">
+									<ul class="nav nav-pills nav-stacked">
+
+
+
+										<li><a href="course.php?course_id=1472&objective_refid=of56734a9ca9e752fe981453ba69c8530&topic_refid=pac76bd249eb2c186ad5da80ccb6bb478&synaptic_pathway=deductive&page_number=1&pages_to_capture=1" onClick="return gotoCoursePage(this)">Simple Harmonic Motion</a>
+										</li>
+
+
+
+
+
+										<li><a href="course.php?course_id=1472&objective_refid=of56734a9ca9e752fe981453ba69c8530&topic_refid=pee99524f1ccf4fafb5b632da69f3e583&synaptic_pathway=deductive&page_number=1&pages_to_capture=1" onClick="return gotoCoursePage(this)">Period of a Spring Mass System</a>
+										</li>
+
+
+
+
+
+										<li><a href="course.php?course_id=1472&objective_refid=of56734a9ca9e752fe981453ba69c8530&topic_refid=p2f33a5a721ede1b671e8f0e5ba98a9ec&synaptic_pathway=deductive&page_number=1&pages_to_capture=1" onClick="return gotoCoursePage(this)">Oscillation of a Pendulum</a>
+										</li>
+
+
+
+
+
+										<li><a href="course.php?course_id=1472&objective_refid=of56734a9ca9e752fe981453ba69c8530&topic_refid=pf201b2c9587e1828c682045b1b6a04d1&synaptic_pathway=deductive&page_number=1&pages_to_capture=1" onClick="return gotoCoursePage(this)">Newton's Law of Gravity</a>
+										</li>
+
+
+
+
+
+										<li><a href="course.php?course_id=1472&objective_refid=of56734a9ca9e752fe981453ba69c8530&topic_refid=p04b30a3474328fb5a8963d6cd935126d&synaptic_pathway=deductive&page_number=1&pages_to_capture=1" onClick="return gotoCoursePage(this)">Gravitational Force</a>
+										</li>
+
+
+
+
+
+										<li><a href="course.php?course_id=1472&objective_refid=of56734a9ca9e752fe981453ba69c8530&topic_refid=p107dd2e5902554549b02d363dee35bdb&synaptic_pathway=deductive&page_number=1&pages_to_capture=1" onClick="return gotoCoursePage(this)">Orbits of Planets and Satellites</a>
+										</li>
+
+
+
+
+										<li class="divider"></li>
+										<li><a href='course.php?course_id=1472&objective_refid=of56734a9ca9e752fe981453ba69c8530&topic_refid=p0bdd7cef985e8e362abe72a15da4a1c6&remediation_type=normal&show_quiz'><span class="glyphicon glyphicon-check"></span> Take Practice Quiz</a>
+										</li>
+
+
+
+
+									</ul>
+								</div>
+							</div>
+						</div>
+
+						<div class="panel panel-primary">
+							<div class="panel-heading">
+								<h4 class="panel-title">
+									<a data-toggle="collapse" data-parent="#toc-accordion" href="#toc-topic-p281260fc77762cad5f11d53d8c0c8720">
+          6.0 Assessment
+        </a>
+								</h4>
+							</div>
+							<div id="toc-topic-p281260fc77762cad5f11d53d8c0c8720" class="panel-collapse collapse ">
+								<div class="panel-body panel-body-toc">
+									<ul class="nav nav-pills nav-stacked">
+
+
+
+										<li><a href="course.php?course_id=1472&objective_refid=of56734a9ca9e752fe981453ba69c8530&topic_refid=paa715a1d945054e5ae6eeb0f106f09a0&synaptic_pathway=deductive&page_number=1&pages_to_capture=1" onClick="return gotoCoursePage(this)">3.2 Assessment</a>
+										</li>
+
+
+
+
+										<li class="divider"></li>
+										<li><a href='course.php?course_id=1472&objective_refid=of56734a9ca9e752fe981453ba69c8530&topic_refid=p281260fc77762cad5f11d53d8c0c8720&remediation_type=normal&show_quiz'><span class="glyphicon glyphicon-check"></span> Take Assessment</a>
+										</li>
+
+
+
+
+									</ul>
+								</div>
+							</div>
+						</div>
+
+					</div>
+
+					<div class="panel-group" id="toc-accordion">
+
+						<div class="panel panel-primary">
+							<div class="panel-heading">
+								<h4 class="panel-title">
+									<a data-toggle="collapse" data-parent="#toc-accordion" href="#toc-topic-pf99a251d4d5634e98965fc161f059023">
+          7.0 Fluids
+        </a>
+								</h4>
+							</div>
+							<div id="toc-topic-pf99a251d4d5634e98965fc161f059023" class="panel-collapse collapse ">
+								<div class="panel-body panel-body-toc">
+									<ul class="nav nav-pills nav-stacked">
+
+
+
+										<li><a href="course.php?course_id=1472&objective_refid=o394e14d5812f305ea1bfb572c55f4450&topic_refid=p4e465dca33b1ad778f2974f25967c7a0&synaptic_pathway=deductive&page_number=1&pages_to_capture=1" onClick="return gotoCoursePage(this)">Fluids and Hydrostatic Pressure</a>
+										</li>
+
+
+
+
+
+										<li><a href="course.php?course_id=1472&objective_refid=o394e14d5812f305ea1bfb572c55f4450&topic_refid=pa67ed68248c4db6c6574b722348e4660&synaptic_pathway=deductive&page_number=1&pages_to_capture=1" onClick="return gotoCoursePage(this)">Pascal's Law and Applications</a>
+										</li>
+
+
+
+
+
+										<li><a href="course.php?course_id=1472&objective_refid=o394e14d5812f305ea1bfb572c55f4450&topic_refid=pfd30842945ea57f874919cfddda93711&synaptic_pathway=deductive&page_number=1&pages_to_capture=1" onClick="return gotoCoursePage(this)">Buoyancy and Archimedes' Law</a>
+										</li>
+
+
+
+
+
+										<li><a href="course.php?course_id=1472&objective_refid=o394e14d5812f305ea1bfb572c55f4450&topic_refid=p3917719e70c7638aa10f2dc39974b4be&synaptic_pathway=deductive&page_number=1&pages_to_capture=1" onClick="return gotoCoursePage(this)">Absolute Pressure and Gauge Pressure</a>
+										</li>
+
+
+
+
+
+										<li><a href="course.php?course_id=1472&objective_refid=o394e14d5812f305ea1bfb572c55f4450&topic_refid=p6422a45c5e131c7b3d39005139b40ebd&synaptic_pathway=deductive&page_number=1&pages_to_capture=1" onClick="return gotoCoursePage(this)">Hydrodynamics</a>
+										</li>
+
+
+
+
+
+										<li><a href="course.php?course_id=1472&objective_refid=o394e14d5812f305ea1bfb572c55f4450&topic_refid=pdbaa8d47bf6935f935d56d137b9bbd62&synaptic_pathway=deductive&page_number=1&pages_to_capture=1" onClick="return gotoCoursePage(this)">Bernoulli's Equation</a>
+										</li>
+
+
+
+
+										<li class="divider"></li>
+										<li><a href='course.php?course_id=1472&objective_refid=o394e14d5812f305ea1bfb572c55f4450&topic_refid=pf99a251d4d5634e98965fc161f059023&remediation_type=normal&show_quiz'><span class="glyphicon glyphicon-check"></span> Take Practice Quiz</a>
+										</li>
+
+
+
+
+									</ul>
+								</div>
+							</div>
+						</div>
+
+						<div class="panel panel-primary">
+							<div class="panel-heading">
+								<h4 class="panel-title">
+									<a data-toggle="collapse" data-parent="#toc-accordion" href="#toc-topic-pe5a823c462cbd53cf6b7f177868a1233">
+          7.0 Assessment
+        </a>
+								</h4>
+							</div>
+							<div id="toc-topic-pe5a823c462cbd53cf6b7f177868a1233" class="panel-collapse collapse ">
+								<div class="panel-body panel-body-toc">
+									<ul class="nav nav-pills nav-stacked">
+
+
+
+										<li><a href="course.php?course_id=1472&objective_refid=o394e14d5812f305ea1bfb572c55f4450&topic_refid=p556061f787984de7fa6a43c40327724b&synaptic_pathway=deductive&page_number=1&pages_to_capture=1" onClick="return gotoCoursePage(this)">4.1 Assessment</a>
+										</li>
+
+
+
+
+										<li class="divider"></li>
+										<li><a href='course.php?course_id=1472&objective_refid=o394e14d5812f305ea1bfb572c55f4450&topic_refid=pe5a823c462cbd53cf6b7f177868a1233&remediation_type=normal&show_quiz'><span class="glyphicon glyphicon-check"></span> Take Assessment</a>
+										</li>
+
+
+
+
+									</ul>
+								</div>
+							</div>
+						</div>
+
+					</div>
+
+					<div class="panel-group" id="toc-accordion">
+
+						<div class="panel panel-primary">
+							<div class="panel-heading">
+								<h4 class="panel-title">
+									<a data-toggle="collapse" data-parent="#toc-accordion" href="#toc-topic-pfb2dc5898721253421537a19d752650c">
+          8.0 Thermal Physics
+        </a>
+								</h4>
+							</div>
+							<div id="toc-topic-pfb2dc5898721253421537a19d752650c" class="panel-collapse collapse ">
+								<div class="panel-body panel-body-toc">
+									<ul class="nav nav-pills nav-stacked">
+
+
+
+										<li><a href="course.php?course_id=1472&objective_refid=o027218d2c199edd927ff969f1859b62c&topic_refid=p55e85c3111437459f0f614e6ab8f5724&synaptic_pathway=deductive&page_number=1&pages_to_capture=1" onClick="return gotoCoursePage(this)">Thermodynamics and Temperature </a>
+										</li>
+
+
+
+
+
+										<li><a href="course.php?course_id=1472&objective_refid=o027218d2c199edd927ff969f1859b62c&topic_refid=pb2109225251d3aec17052217b958f771&synaptic_pathway=deductive&page_number=1&pages_to_capture=1" onClick="return gotoCoursePage(this)">Heat Transfer and Phase Changes</a>
+										</li>
+
+
+
+
+
+										<li><a href="course.php?course_id=1472&objective_refid=o027218d2c199edd927ff969f1859b62c&topic_refid=p49d460d9963b617a5816475fa9b25763&synaptic_pathway=deductive&page_number=1&pages_to_capture=1" onClick="return gotoCoursePage(this)">Thermal Expansion of Solids and Liquids</a>
+										</li>
+
+
+
+
+
+										<li><a href="course.php?course_id=1472&objective_refid=o027218d2c199edd927ff969f1859b62c&topic_refid=p9a964110af461dbc7a0191b0baaa2925&synaptic_pathway=deductive&page_number=1&pages_to_capture=1" onClick="return gotoCoursePage(this)">Kinetic Theory of Gases</a>
+										</li>
+
+
+
+
+
+										<li><a href="course.php?course_id=1472&objective_refid=o027218d2c199edd927ff969f1859b62c&topic_refid=pcede08aa665611eec7a6585526057458&synaptic_pathway=deductive&page_number=1&pages_to_capture=1" onClick="return gotoCoursePage(this)">The Gas Law, The First Law of Thermodynamics, and Work</a>
+										</li>
+
+
+
+
+
+										<li><a href="course.php?course_id=1472&objective_refid=o027218d2c199edd927ff969f1859b62c&topic_refid=p7f488421939d93d588a32def521eefaa&synaptic_pathway=deductive&page_number=1&pages_to_capture=1" onClick="return gotoCoursePage(this)">Thermodynamic Processes and The Second Law of Thermodynamics</a>
+										</li>
+
+
+
+
+										<li class="divider"></li>
+										<li><a href='course.php?course_id=1472&objective_refid=o027218d2c199edd927ff969f1859b62c&topic_refid=pfb2dc5898721253421537a19d752650c&remediation_type=normal&show_quiz'><span class="glyphicon glyphicon-check"></span> Take Practice Quiz</a>
+										</li>
+
+
+
+
+									</ul>
+								</div>
+							</div>
+						</div>
+
+						<div class="panel panel-primary">
+							<div class="panel-heading">
+								<h4 class="panel-title">
+									<a data-toggle="collapse" data-parent="#toc-accordion" href="#toc-topic-p6a451f8cc3b28983b71245bfd13a2e7c">
+          8.0 Assessment
+        </a>
+								</h4>
+							</div>
+							<div id="toc-topic-p6a451f8cc3b28983b71245bfd13a2e7c" class="panel-collapse collapse ">
+								<div class="panel-body panel-body-toc">
+									<ul class="nav nav-pills nav-stacked">
+
+
+
+										<li><a href="course.php?course_id=1472&objective_refid=o027218d2c199edd927ff969f1859b62c&topic_refid=p8e80b688a5c32ab72417c3b575664647&synaptic_pathway=deductive&page_number=1&pages_to_capture=1" onClick="return gotoCoursePage(this)">4.2 Assessment</a>
+										</li>
+
+
+
+
+										<li class="divider"></li>
+										<li><a href='course.php?course_id=1472&objective_refid=o027218d2c199edd927ff969f1859b62c&topic_refid=p6a451f8cc3b28983b71245bfd13a2e7c&remediation_type=normal&show_quiz'><span class="glyphicon glyphicon-check"></span> Take Assessment</a>
+										</li>
+
+
+
+
+									</ul>
+								</div>
+							</div>
+						</div>
+
+					</div>
+
+					<div class="panel-group" id="toc-accordion">
+
+						<div class="panel panel-primary">
+							<div class="panel-heading">
+								<h4 class="panel-title">
+									<a data-toggle="collapse" data-parent="#toc-accordion" href="#toc-topic-p04af8c26d2b5fc7f9185092940d26e5d">
+          9.0 Electrostatics
+        </a>
+								</h4>
+							</div>
+							<div id="toc-topic-p04af8c26d2b5fc7f9185092940d26e5d" class="panel-collapse collapse ">
+								<div class="panel-body panel-body-toc">
+									<ul class="nav nav-pills nav-stacked">
+
+
+
+										<li><a href="course.php?course_id=1472&objective_refid=o59356e665310d3903127811af8655d50&topic_refid=p62c04379b88f7f9c284b096d99a0c9b2&synaptic_pathway=deductive&page_number=1&pages_to_capture=1" onClick="return gotoCoursePage(this)">Electrical Charge</a>
+										</li>
+
+
+
+
+
+										<li><a href="course.php?course_id=1472&objective_refid=o59356e665310d3903127811af8655d50&topic_refid=p0f807a0047c35dc6eae8515086637213&synaptic_pathway=deductive&page_number=1&pages_to_capture=1" onClick="return gotoCoursePage(this)">Conductors and Insulators Electrical Charges</a>
+										</li>
+
+
+
+
+
+										<li><a href="course.php?course_id=1472&objective_refid=o59356e665310d3903127811af8655d50&topic_refid=pbb0778f751304d172252356948fffa0f&synaptic_pathway=deductive&page_number=1&pages_to_capture=1" onClick="return gotoCoursePage(this)">Polarization and Induced Charge</a>
+										</li>
+
+
+
+
+
+										<li><a href="course.php?course_id=1472&objective_refid=o59356e665310d3903127811af8655d50&topic_refid=pd6399ca5079a6f9f1a871336f4d28097&synaptic_pathway=deductive&page_number=1&pages_to_capture=1" onClick="return gotoCoursePage(this)">Electrostatic Force and Coulomb's Law</a>
+										</li>
+
+
+
+
+
+										<li><a href="course.php?course_id=1472&objective_refid=o59356e665310d3903127811af8655d50&topic_refid=p3bee645273ba2b3612f6caf3163ef9cf&synaptic_pathway=deductive&page_number=1&pages_to_capture=1" onClick="return gotoCoursePage(this)">The Electric Field</a>
+										</li>
+
+
+
+
+
+										<li><a href="course.php?course_id=1472&objective_refid=o59356e665310d3903127811af8655d50&topic_refid=pbc6d8c56146bdfa1bfe58de20680ff5d&synaptic_pathway=deductive&page_number=1&pages_to_capture=1" onClick="return gotoCoursePage(this)">Gauss's Law</a>
+										</li>
+
+
+
+
+										<li class="divider"></li>
+										<li><a href='course.php?course_id=1472&objective_refid=o59356e665310d3903127811af8655d50&topic_refid=p04af8c26d2b5fc7f9185092940d26e5d&remediation_type=normal&show_quiz'><span class="glyphicon glyphicon-check"></span> Take Practice Quiz</a>
+										</li>
+
+
+
+
+									</ul>
+								</div>
+							</div>
+						</div>
+
+						<div class="panel panel-primary">
+							<div class="panel-heading">
+								<h4 class="panel-title">
+									<a data-toggle="collapse" data-parent="#toc-accordion" href="#toc-topic-pb2a5b65033fcc2cfc6278309f79e91d3">
+          9.0 Assessment
+        </a>
+								</h4>
+							</div>
+							<div id="toc-topic-pb2a5b65033fcc2cfc6278309f79e91d3" class="panel-collapse collapse ">
+								<div class="panel-body panel-body-toc">
+									<ul class="nav nav-pills nav-stacked">
+
+
+
+										<li><a href="course.php?course_id=1472&objective_refid=o59356e665310d3903127811af8655d50&topic_refid=p6f356f2ccd3bc42a8288f7a290bc2e6a&synaptic_pathway=deductive&page_number=1&pages_to_capture=1" onClick="return gotoCoursePage(this)">5.1 Assessment</a>
+										</li>
+
+
+
+
+										<li class="divider"></li>
+										<li><a href='course.php?course_id=1472&objective_refid=o59356e665310d3903127811af8655d50&topic_refid=pb2a5b65033fcc2cfc6278309f79e91d3&remediation_type=normal&show_quiz'><span class="glyphicon glyphicon-check"></span> Take Assessment</a>
+										</li>
+
+
+
+
+									</ul>
+								</div>
+							</div>
+						</div>
+
+					</div>
+
+					<div class="panel-group" id="toc-accordion">
+
+						<div class="panel panel-primary">
+							<div class="panel-heading">
+								<h4 class="panel-title">
+									<a data-toggle="collapse" data-parent="#toc-accordion" href="#toc-topic-p2ca30686cdb88ad1bf494c6ae907eb6f">
+          10.0 Electric Potential and Capacitance
+        </a>
+								</h4>
+							</div>
+							<div id="toc-topic-p2ca30686cdb88ad1bf494c6ae907eb6f" class="panel-collapse collapse ">
+								<div class="panel-body panel-body-toc">
+									<ul class="nav nav-pills nav-stacked">
+
+
+
+										<li><a href="course.php?course_id=1472&objective_refid=o147354858614422763331693323741&topic_refid=pf13c646d644d2d9bf7cac12dad665c8c&synaptic_pathway=deductive&page_number=1&pages_to_capture=1" onClick="return gotoCoursePage(this)">Electric Potential and Work</a>
+										</li>
+
+
+
+
+
+										<li><a href="course.php?course_id=1472&objective_refid=o147354858614422763331693323741&topic_refid=p561961a89ed0bcfedad1510b1a7540a7&synaptic_pathway=deductive&page_number=1&pages_to_capture=1" onClick="return gotoCoursePage(this)">Point Charge on a Sphere</a>
+										</li>
+
+
+
+
+
+										<li><a href="course.php?course_id=1472&objective_refid=o147354858614422763331693323741&topic_refid=pdcc7e727991d89915927528259b66c31&synaptic_pathway=deductive&page_number=1&pages_to_capture=1" onClick="return gotoCoursePage(this)">Potential of Multiple Point Charges </a>
+										</li>
+
+
+
+
+
+										<li><a href="course.php?course_id=1472&objective_refid=o147354858614422763331693323741&topic_refid=p2965b70aaf4636be3140de9990fbd587&synaptic_pathway=deductive&page_number=1&pages_to_capture=1" onClick="return gotoCoursePage(this)">Electrical Potential of Plates and Spheres </a>
+										</li>
+
+
+
+
+
+										<li><a href="course.php?course_id=1472&objective_refid=o147354858614422763331693323741&topic_refid=p68cb6a3274e47011f8631b0692fdbe92&synaptic_pathway=deductive&page_number=1&pages_to_capture=1" onClick="return gotoCoursePage(this)">Capacitance and Parallel Plates</a>
+										</li>
+
+
+
+
+
+										<li><a href="course.php?course_id=1472&objective_refid=o147354858614422763331693323741&topic_refid=pf3137cf5c0ddf399fa3db57f588eb3db&synaptic_pathway=deductive&page_number=1&pages_to_capture=1" onClick="return gotoCoursePage(this)">Capacitance and Spherical and Cylindrical Objects</a>
+										</li>
+
+
+
+
+										<li class="divider"></li>
+										<li><a href='course.php?course_id=1472&objective_refid=o147354858614422763331693323741&topic_refid=p2ca30686cdb88ad1bf494c6ae907eb6f&remediation_type=normal&show_quiz'><span class="glyphicon glyphicon-check"></span> Take Practice Quiz</a>
+										</li>
+
+
+
+
+									</ul>
+								</div>
+							</div>
+						</div>
+
+						<div class="panel panel-primary">
+							<div class="panel-heading">
+								<h4 class="panel-title">
+									<a data-toggle="collapse" data-parent="#toc-accordion" href="#toc-topic-pd31a703fcf79457a75bb8a7c20027754">
+          10.0 Assessment
+        </a>
+								</h4>
+							</div>
+							<div id="toc-topic-pd31a703fcf79457a75bb8a7c20027754" class="panel-collapse collapse ">
+								<div class="panel-body panel-body-toc">
+									<ul class="nav nav-pills nav-stacked">
+
+
+
+										<li><a href="course.php?course_id=1472&objective_refid=o147354858614422763331693323741&topic_refid=pcaad7025118a476464cdcbe591d968ba&synaptic_pathway=deductive&page_number=1&pages_to_capture=1" onClick="return gotoCoursePage(this)">5.2 Assessment</a>
+										</li>
+
+
+
+
+										<li class="divider"></li>
+										<li><a href='course.php?course_id=1472&objective_refid=o147354858614422763331693323741&topic_refid=pd31a703fcf79457a75bb8a7c20027754&remediation_type=normal&show_quiz'><span class="glyphicon glyphicon-check"></span> Take Assessment</a>
+										</li>
+
+
+
+
+									</ul>
+								</div>
+							</div>
+						</div>
+
+					</div>
+
+					<div class="panel-group" id="toc-accordion">
+
+						<div class="panel panel-primary">
+							<div class="panel-heading">
+								<h4 class="panel-title">
+									<a data-toggle="collapse" data-parent="#toc-accordion" href="#toc-topic-p5f133326d7571616a4dca3cc38dde2a5">
+          11.0 DC Circuits
+        </a>
+								</h4>
+							</div>
+							<div id="toc-topic-p5f133326d7571616a4dca3cc38dde2a5" class="panel-collapse collapse ">
+								<div class="panel-body panel-body-toc">
+									<ul class="nav nav-pills nav-stacked">
+
+
+
+										<li><a href="course.php?course_id=1472&objective_refid=o1dacdd93edc49ae15cc1681d6366c7f5&topic_refid=p9b79a47849aea0e875536d2ce91d51be&synaptic_pathway=deductive&page_number=1&pages_to_capture=1" onClick="return gotoCoursePage(this)">Introduction to Circuits and Ohm's Law</a>
+										</li>
+
+
+
+
+
+										<li><a href="course.php?course_id=1472&objective_refid=o1dacdd93edc49ae15cc1681d6366c7f5&topic_refid=pe9b73f90a9b5e487482996a188366615&synaptic_pathway=deductive&page_number=1&pages_to_capture=1" onClick="return gotoCoursePage(this)">Kirchhoff's Laws</a>
+										</li>
+
+
+
+
+
+										<li><a href="course.php?course_id=1472&objective_refid=o1dacdd93edc49ae15cc1681d6366c7f5&topic_refid=p88e8b91715cceb7ab4d9d84a023bf847&synaptic_pathway=deductive&page_number=1&pages_to_capture=1" onClick="return gotoCoursePage(this)">Electrical Power and Energy</a>
+										</li>
+
+
+
+
+
+										<li><a href="course.php?course_id=1472&objective_refid=o1dacdd93edc49ae15cc1681d6366c7f5&topic_refid=pd342076c4ee7642f7a8cfac0542c176a&synaptic_pathway=deductive&page_number=1&pages_to_capture=1" onClick="return gotoCoursePage(this)">Combinations of Circuit Elements</a>
+										</li>
+
+
+
+
+
+										<li><a href="course.php?course_id=1472&objective_refid=o1dacdd93edc49ae15cc1681d6366c7f5&topic_refid=p52decf4ac8cf7f2e0e760066e1166ea7&synaptic_pathway=deductive&page_number=1&pages_to_capture=1" onClick="return gotoCoursePage(this)">Capacitors in Circuits</a>
+										</li>
+
+
+
+
+
+										<li><a href="course.php?course_id=1472&objective_refid=o1dacdd93edc49ae15cc1681d6366c7f5&topic_refid=p08094969d921737fc648d03bebbf4c1c&synaptic_pathway=deductive&page_number=1&pages_to_capture=1" onClick="return gotoCoursePage(this)">Transients in RC Circuits</a>
+										</li>
+
+
+
+
+										<li class="divider"></li>
+										<li><a href='course.php?course_id=1472&objective_refid=o1dacdd93edc49ae15cc1681d6366c7f5&topic_refid=p5f133326d7571616a4dca3cc38dde2a5&remediation_type=normal&show_quiz'><span class="glyphicon glyphicon-check"></span> Take Practice Quiz</a>
+										</li>
+
+
+
+
+									</ul>
+								</div>
+							</div>
+						</div>
+
+						<div class="panel panel-primary">
+							<div class="panel-heading">
+								<h4 class="panel-title">
+									<a data-toggle="collapse" data-parent="#toc-accordion" href="#toc-topic-p6bb51e8379da28f818a296783b314996">
+          11.0 Assessment
+        </a>
+								</h4>
+							</div>
+							<div id="toc-topic-p6bb51e8379da28f818a296783b314996" class="panel-collapse collapse ">
+								<div class="panel-body panel-body-toc">
+									<ul class="nav nav-pills nav-stacked">
+
+
+
+										<li><a href="course.php?course_id=1472&objective_refid=o1dacdd93edc49ae15cc1681d6366c7f5&topic_refid=p0fb67f159ab0bc82e062e9f0a2fea801&synaptic_pathway=deductive&page_number=1&pages_to_capture=1" onClick="return gotoCoursePage(this)">6.1 Assessment</a>
+										</li>
+
+
+
+
+										<li class="divider"></li>
+										<li><a href='course.php?course_id=1472&objective_refid=o1dacdd93edc49ae15cc1681d6366c7f5&topic_refid=p6bb51e8379da28f818a296783b314996&remediation_type=normal&show_quiz'><span class="glyphicon glyphicon-check"></span> Take Assessment</a>
+										</li>
+
+
+
+
+									</ul>
+								</div>
+							</div>
+						</div>
+
+					</div>
+
+					<div class="panel-group" id="toc-accordion">
+
+						<div class="panel panel-primary">
+							<div class="panel-heading">
+								<h4 class="panel-title">
+									<a data-toggle="collapse" data-parent="#toc-accordion" href="#toc-topic-p4452a0360a6069e711c69d8a86cb693c">
+          12.0 Magnetism
+        </a>
+								</h4>
+							</div>
+							<div id="toc-topic-p4452a0360a6069e711c69d8a86cb693c" class="panel-collapse collapse ">
+								<div class="panel-body panel-body-toc">
+									<ul class="nav nav-pills nav-stacked">
+
+
+
+										<li><a href="course.php?course_id=1472&objective_refid=o8819677811423807507997091343&topic_refid=pa7df9f7701388483079e1b7d7a09b8aa&synaptic_pathway=deductive&page_number=1&pages_to_capture=1" onClick="return gotoCoursePage(this)">Magnetism: Force and Field</a>
+										</li>
+
+
+
+
+
+										<li><a href="course.php?course_id=1472&objective_refid=o8819677811423807507997091343&topic_refid=p79b1eaf6c2a77b66232a66c5dca60902&synaptic_pathway=deductive&page_number=1&pages_to_capture=1" onClick="return gotoCoursePage(this)">Applications and Ampere's law</a>
+										</li>
+
+
+
+
+
+										<li><a href="course.php?course_id=1472&objective_refid=o8819677811423807507997091343&topic_refid=p8cd098a6076545f3dc64d08e047d22ec&synaptic_pathway=deductive&page_number=1&pages_to_capture=1" onClick="return gotoCoursePage(this)">Electromagnetic Induction</a>
+										</li>
+
+
+
+
+
+										<li><a href="course.php?course_id=1472&objective_refid=o8819677811423807507997091343&topic_refid=pee527d6ca6897e110dd58af93d746e85&synaptic_pathway=deductive&page_number=1&pages_to_capture=1" onClick="return gotoCoursePage(this)">Applications of Electromagnetic Induction</a>
+										</li>
+
+
+
+
+
+										<li><a href="course.php?course_id=1472&objective_refid=o8819677811423807507997091343&topic_refid=pa121b6292a0c06d930ad666643fa795d&synaptic_pathway=deductive&page_number=1&pages_to_capture=1" onClick="return gotoCoursePage(this)">Maxwell Equations</a>
+										</li>
+
+
+
+
+
+										<li><a href="course.php?course_id=1472&objective_refid=o8819677811423807507997091343&topic_refid=p421a01ce3b76e612dbcb71809711375c&synaptic_pathway=deductive&page_number=1&pages_to_capture=1" onClick="return gotoCoursePage(this)">Electromagnetic Waves</a>
+										</li>
+
+
+
+
+										<li class="divider"></li>
+										<li><a href='course.php?course_id=1472&objective_refid=o8819677811423807507997091343&topic_refid=p4452a0360a6069e711c69d8a86cb693c&remediation_type=normal&show_quiz'><span class="glyphicon glyphicon-check"></span> Take Practice Quiz</a>
+										</li>
+
+
+
+
+									</ul>
+								</div>
+							</div>
+						</div>
+
+						<div class="panel panel-primary">
+							<div class="panel-heading">
+								<h4 class="panel-title">
+									<a data-toggle="collapse" data-parent="#toc-accordion" href="#toc-topic-p9368f9f63a2fefd5babacfb684fed2ee">
+          12.0 Assessment
+        </a>
+								</h4>
+							</div>
+							<div id="toc-topic-p9368f9f63a2fefd5babacfb684fed2ee" class="panel-collapse collapse ">
+								<div class="panel-body panel-body-toc">
+									<ul class="nav nav-pills nav-stacked">
+
+
+
+										<li><a href="course.php?course_id=1472&objective_refid=o8819677811423807507997091343&topic_refid=p8148eb27703bb299fb482eb3d1cbc1ba&synaptic_pathway=deductive&page_number=1&pages_to_capture=1" onClick="return gotoCoursePage(this)">6.2 Assessment</a>
+										</li>
+
+
+
+
+										<li class="divider"></li>
+										<li><a href='course.php?course_id=1472&objective_refid=o8819677811423807507997091343&topic_refid=p9368f9f63a2fefd5babacfb684fed2ee&remediation_type=normal&show_quiz'><span class="glyphicon glyphicon-check"></span> Take Assessment</a>
+										</li>
+
+
+
+
+									</ul>
+								</div>
+							</div>
+						</div>
+
+					</div>
+
+					<div class="panel-group" id="toc-accordion">
+
+						<div class="panel panel-primary">
+							<div class="panel-heading">
+								<h4 class="panel-title">
+									<a data-toggle="collapse" data-parent="#toc-accordion" href="#toc-topic-pd9b20f4292c43d06065a178dd8e3370d">
+          13.0 Mechanical Wave Motion
+        </a>
+								</h4>
+							</div>
+							<div id="toc-topic-pd9b20f4292c43d06065a178dd8e3370d" class="panel-collapse collapse ">
+								<div class="panel-body panel-body-toc">
+									<ul class="nav nav-pills nav-stacked">
+
+
+
+										<li><a href="course.php?course_id=1472&objective_refid=o3abf450cb6376965ebf9f32e29394603&topic_refid=p560aea9325756ab441dde6733cd8d664&synaptic_pathway=deductive&page_number=1&pages_to_capture=1" onClick="return gotoCoursePage(this)">Properties of Wave Motion and Equation of Motion</a>
+										</li>
+
+
+
+
+
+										<li><a href="course.php?course_id=1472&objective_refid=o3abf450cb6376965ebf9f32e29394603&topic_refid=p8f711ddfc9f8b32476ea763205a3a2eb&synaptic_pathway=deductive&page_number=1&pages_to_capture=1" onClick="return gotoCoursePage(this)">Wave Interactions</a>
+										</li>
+
+
+
+
+
+										<li><a href="course.php?course_id=1472&objective_refid=o3abf450cb6376965ebf9f32e29394603&topic_refid=p7551b84225113b60700b97ae75b1f445&synaptic_pathway=deductive&page_number=1&pages_to_capture=1" onClick="return gotoCoursePage(this)">Wave Interactions and Sound Waves</a>
+										</li>
+
+
+
+
+
+										<li><a href="course.php?course_id=1472&objective_refid=o3abf450cb6376965ebf9f32e29394603&topic_refid=p77774cae9e19ca3bbf9bd7f4c389d130&synaptic_pathway=deductive&page_number=1&pages_to_capture=1" onClick="return gotoCoursePage(this)">Standing Mechanical Waves</a>
+										</li>
+
+
+
+
+
+										<li><a href="course.php?course_id=1472&objective_refid=o3abf450cb6376965ebf9f32e29394603&topic_refid=p0d3d66972226a166aa10dc4e2bfe1286&synaptic_pathway=deductive&page_number=1&pages_to_capture=1" onClick="return gotoCoursePage(this)">Standing Waves in Tubes and Pipes</a>
+										</li>
+
+
+
+
+
+										<li><a href="course.php?course_id=1472&objective_refid=o3abf450cb6376965ebf9f32e29394603&topic_refid=pbe335b17c9c477f37bc543133cdd03a6&synaptic_pathway=deductive&page_number=1&pages_to_capture=1" onClick="return gotoCoursePage(this)">The Doppler Effect</a>
+										</li>
+
+
+
+
+										<li class="divider"></li>
+										<li><a href='course.php?course_id=1472&objective_refid=o3abf450cb6376965ebf9f32e29394603&topic_refid=pd9b20f4292c43d06065a178dd8e3370d&remediation_type=normal&show_quiz'><span class="glyphicon glyphicon-check"></span> Take Practice Quiz</a>
+										</li>
+
+
+
+
+									</ul>
+								</div>
+							</div>
+						</div>
+
+						<div class="panel panel-primary">
+							<div class="panel-heading">
+								<h4 class="panel-title">
+									<a data-toggle="collapse" data-parent="#toc-accordion" href="#toc-topic-p6bc33543eae2b9158995816a82f1705a">
+          13.0 Assessment
+        </a>
+								</h4>
+							</div>
+							<div id="toc-topic-p6bc33543eae2b9158995816a82f1705a" class="panel-collapse collapse ">
+								<div class="panel-body panel-body-toc">
+									<ul class="nav nav-pills nav-stacked">
+
+
+
+										<li><a href="course.php?course_id=1472&objective_refid=o3abf450cb6376965ebf9f32e29394603&topic_refid=p16399d77b7dcddfe00baa001bf106d56&synaptic_pathway=deductive&page_number=1&pages_to_capture=1" onClick="return gotoCoursePage(this)">7.1 Assessment</a>
+										</li>
+
+
+
+
+										<li class="divider"></li>
+										<li><a href='course.php?course_id=1472&objective_refid=o3abf450cb6376965ebf9f32e29394603&topic_refid=p6bc33543eae2b9158995816a82f1705a&remediation_type=normal&show_quiz'><span class="glyphicon glyphicon-check"></span> Take Assessment</a>
+										</li>
+
+
+
+
+									</ul>
+								</div>
+							</div>
+						</div>
+
+					</div>
+
+					<div class="panel-group" id="toc-accordion">
+
+						<div class="panel panel-primary">
+							<div class="panel-heading">
+								<h4 class="panel-title">
+									<a data-toggle="collapse" data-parent="#toc-accordion" href="#toc-topic-pd40c31330111f0d514b57e9f9597d462">
+          14.0 Physical Optics
+        </a>
+								</h4>
+							</div>
+							<div id="toc-topic-pd40c31330111f0d514b57e9f9597d462" class="panel-collapse collapse ">
+								<div class="panel-body panel-body-toc">
+									<ul class="nav nav-pills nav-stacked">
+
+
+
+										<li><a href="course.php?course_id=1472&objective_refid=o17256414941062783762439143492&topic_refid=pb7835aba3bc06590ec94596c0bec8e06&synaptic_pathway=deductive&page_number=1&pages_to_capture=1" onClick="return gotoCoursePage(this)">Reflection of Light</a>
+										</li>
+
+
+
+
+
+										<li><a href="course.php?course_id=1472&objective_refid=o17256414941062783762439143492&topic_refid=p378a91ab20175c5221e1da2a26c893c8&synaptic_pathway=deductive&page_number=1&pages_to_capture=1" onClick="return gotoCoursePage(this)">Refraction of light</a>
+										</li>
+
+
+
+
+
+										<li><a href="course.php?course_id=1472&objective_refid=o17256414941062783762439143492&topic_refid=p2dd4a4feceb20e2ea60c3b4b0dab3fd5&synaptic_pathway=deductive&page_number=1&pages_to_capture=1" onClick="return gotoCoursePage(this)">Total Internal Reflection</a>
+										</li>
+
+
+
+
+
+										<li><a href="course.php?course_id=1472&objective_refid=o17256414941062783762439143492&topic_refid=peecbae24a7651fa1d5c569aa851d8a4c&synaptic_pathway=deductive&page_number=1&pages_to_capture=1" onClick="return gotoCoursePage(this)">Images Made by Concave Mirrors</a>
+										</li>
+
+
+
+
+
+										<li><a href="course.php?course_id=1472&objective_refid=o17256414941062783762439143492&topic_refid=p6f1aba4d034d88840c3a6b4a5858318f&synaptic_pathway=deductive&page_number=1&pages_to_capture=1" onClick="return gotoCoursePage(this)">Images Made by Lenses</a>
+										</li>
+
+
+
+
+
+										<li><a href="course.php?course_id=1472&objective_refid=o17256414941062783762439143492&topic_refid=p222572809e075dd58372d0f22366241a&synaptic_pathway=deductive&page_number=1&pages_to_capture=1" onClick="return gotoCoursePage(this)">Optical Instruments</a>
+										</li>
+
+
+
+
+										<li class="divider"></li>
+										<li><a href='course.php?course_id=1472&objective_refid=o17256414941062783762439143492&topic_refid=pd40c31330111f0d514b57e9f9597d462&remediation_type=normal&show_quiz'><span class="glyphicon glyphicon-check"></span> Take Practice Quiz</a>
+										</li>
+
+
+
+
+									</ul>
+								</div>
+							</div>
+						</div>
+
+						<div class="panel panel-primary">
+							<div class="panel-heading">
+								<h4 class="panel-title">
+									<a data-toggle="collapse" data-parent="#toc-accordion" href="#toc-topic-p83a3391ee7460053dc791a554225acde">
+          14.0 Assessment
+        </a>
+								</h4>
+							</div>
+							<div id="toc-topic-p83a3391ee7460053dc791a554225acde" class="panel-collapse collapse ">
+								<div class="panel-body panel-body-toc">
+									<ul class="nav nav-pills nav-stacked">
+
+
+
+										<li><a href="course.php?course_id=1472&objective_refid=o17256414941062783762439143492&topic_refid=p5939765793cc302296908a8f7006c532&synaptic_pathway=deductive&page_number=1&pages_to_capture=1" onClick="return gotoCoursePage(this)">7.2 Assessment</a>
+										</li>
+
+
+
+
+										<li class="divider"></li>
+										<li><a href='course.php?course_id=1472&objective_refid=o17256414941062783762439143492&topic_refid=p83a3391ee7460053dc791a554225acde&remediation_type=normal&show_quiz'><span class="glyphicon glyphicon-check"></span> Take Assessment</a>
+										</li>
+
+
+
+
+									</ul>
+								</div>
+							</div>
+						</div>
+
+					</div>
+
+					<div class="panel-group" id="toc-accordion">
+
+						<div class="panel panel-primary">
+							<div class="panel-heading">
+								<h4 class="panel-title">
+									<a data-toggle="collapse" data-parent="#toc-accordion" href="#toc-topic-p9ca0aa17fcf22efe56e0a354a7f223d7">
+          15.0 Geometric Optics
+        </a>
+								</h4>
+							</div>
+							<div id="toc-topic-p9ca0aa17fcf22efe56e0a354a7f223d7" class="panel-collapse collapse ">
+								<div class="panel-body panel-body-toc">
+									<ul class="nav nav-pills nav-stacked">
+
+
+
+										<li><a href="course.php?course_id=1472&objective_refid=o8ecf142354ff65ac3994391104107e85&topic_refid=pdce0cda354fd5345bbca7fe6831703a6&synaptic_pathway=deductive&page_number=1&pages_to_capture=1" onClick="return gotoCoursePage(this)">Electromagnetic Spectrum</a>
+										</li>
+
+
+
+
+
+										<li><a href="course.php?course_id=1472&objective_refid=o8ecf142354ff65ac3994391104107e85&topic_refid=pfb9852be10ff7f262171ada8f24ba79a&synaptic_pathway=deductive&page_number=1&pages_to_capture=1" onClick="return gotoCoursePage(this)">Interference of Light</a>
+										</li>
+
+
+
+
+
+										<li><a href="course.php?course_id=1472&objective_refid=o8ecf142354ff65ac3994391104107e85&topic_refid=pa40748fb434611567d1e40edd8ec755f&synaptic_pathway=deductive&page_number=1&pages_to_capture=1" onClick="return gotoCoursePage(this)">Diffraction of Light</a>
+										</li>
+
+
+
+
+
+										<li><a href="course.php?course_id=1472&objective_refid=o8ecf142354ff65ac3994391104107e85&topic_refid=pc40f0fd9f666942025c968aabbef0a90&synaptic_pathway=deductive&page_number=1&pages_to_capture=1" onClick="return gotoCoursePage(this)">Applications of Diffraction Gratings</a>
+										</li>
+
+
+
+
+
+										<li><a href="course.php?course_id=1472&objective_refid=o8ecf142354ff65ac3994391104107e85&topic_refid=pe34d13c910bf61cd2de6231fa25e421d&synaptic_pathway=deductive&page_number=1&pages_to_capture=1" onClick="return gotoCoursePage(this)">Dispersion of Light</a>
+										</li>
+
+
+
+
+
+										<li><a href="course.php?course_id=1472&objective_refid=o8ecf142354ff65ac3994391104107e85&topic_refid=pec6f4c97e593dd1fbb46785231d5b22f&synaptic_pathway=deductive&page_number=1&pages_to_capture=1" onClick="return gotoCoursePage(this)">Thin Films and Optical Coating</a>
+										</li>
+
+
+
+
+										<li class="divider"></li>
+										<li><a href='course.php?course_id=1472&objective_refid=o8ecf142354ff65ac3994391104107e85&topic_refid=p9ca0aa17fcf22efe56e0a354a7f223d7&remediation_type=normal&show_quiz'><span class="glyphicon glyphicon-check"></span> Take Practice Quiz</a>
+										</li>
+
+
+
+
+									</ul>
+								</div>
+							</div>
+						</div>
+
+						<div class="panel panel-primary">
+							<div class="panel-heading">
+								<h4 class="panel-title">
+									<a data-toggle="collapse" data-parent="#toc-accordion" href="#toc-topic-p092881c54c9a3390c3cb959d91eefb21">
+          15.0 Assessment
+        </a>
+								</h4>
+							</div>
+							<div id="toc-topic-p092881c54c9a3390c3cb959d91eefb21" class="panel-collapse collapse ">
+								<div class="panel-body panel-body-toc">
+									<ul class="nav nav-pills nav-stacked">
+
+
+
+										<li><a href="course.php?course_id=1472&objective_refid=o8ecf142354ff65ac3994391104107e85&topic_refid=pc89d52757b9c1abcc5f9c0fed4a4f01c&synaptic_pathway=deductive&page_number=1&pages_to_capture=1" onClick="return gotoCoursePage(this)">8.1 Assessment</a>
+										</li>
+
+
+
+
+										<li class="divider"></li>
+										<li><a href='course.php?course_id=1472&objective_refid=o8ecf142354ff65ac3994391104107e85&topic_refid=p092881c54c9a3390c3cb959d91eefb21&remediation_type=normal&show_quiz'><span class="glyphicon glyphicon-check"></span> Take Assessment</a>
+										</li>
+
+
+
+
+									</ul>
+								</div>
+							</div>
+						</div>
+
+					</div>
+
+					<div class="panel-group" id="toc-accordion">
+
+						<div class="panel panel-primary">
+							<div class="panel-heading">
+								<h4 class="panel-title">
+									<a data-toggle="collapse" data-parent="#toc-accordion" href="#toc-topic-p64fc10d62ae9db1ce709cf9844d50400">
+          16.0 Modern Physics
+        </a>
+								</h4>
+							</div>
+							<div id="toc-topic-p64fc10d62ae9db1ce709cf9844d50400" class="panel-collapse collapse ">
+								<div class="panel-body panel-body-toc">
+									<ul class="nav nav-pills nav-stacked">
+
+
+
+										<li><a href="course.php?course_id=1472&objective_refid=o11720913001579446731063699295&topic_refid=p04e04b28716f4115ff4d029e0c290b7c&synaptic_pathway=deductive&page_number=1&pages_to_capture=1" onClick="return gotoCoursePage(this)">Modern Physics</a>
+										</li>
+
+
+
+
+
+										<li><a href="course.php?course_id=1472&objective_refid=o11720913001579446731063699295&topic_refid=p12557122ef4dac45e83cfe0fd85c7d14&synaptic_pathway=deductive&page_number=1&pages_to_capture=1" onClick="return gotoCoursePage(this)">Particles are Waves</a>
+										</li>
+
+
+
+
+
+										<li><a href="course.php?course_id=1472&objective_refid=o11720913001579446731063699295&topic_refid=p378f392f52291b19c3248185af630106&synaptic_pathway=deductive&page_number=1&pages_to_capture=1" onClick="return gotoCoursePage(this)">Electron Levels</a>
+										</li>
+
+
+
+
+
+										<li><a href="course.php?course_id=1472&objective_refid=o11720913001579446731063699295&topic_refid=p2edcf97c80d9cf2891681b1d91dedc62&synaptic_pathway=deductive&page_number=1&pages_to_capture=1" onClick="return gotoCoursePage(this)">Relativity</a>
+										</li>
+
+
+
+
+
+										<li><a href="course.php?course_id=1472&objective_refid=o11720913001579446731063699295&topic_refid=p1cd0ef9842a076863425d7f0d97be1ee&synaptic_pathway=deductive&page_number=1&pages_to_capture=1" onClick="return gotoCoursePage(this)">Nuclear Physics</a>
+										</li>
+
+
+
+
+
+										<li><a href="course.php?course_id=1472&objective_refid=o11720913001579446731063699295&topic_refid=p923774139a5698697a3362ef39f44290&synaptic_pathway=deductive&page_number=1&pages_to_capture=1" onClick="return gotoCoursePage(this)">Nuclear Decay</a>
+										</li>
+
+
+
+
+										<li class="divider"></li>
+										<li><a href='course.php?course_id=1472&objective_refid=o11720913001579446731063699295&topic_refid=p64fc10d62ae9db1ce709cf9844d50400&remediation_type=normal&show_quiz'><span class="glyphicon glyphicon-check"></span> Take Practice Quiz</a>
+										</li>
+
+
+
+
+									</ul>
+								</div>
+							</div>
+						</div>
+
+						<div class="panel panel-primary">
+							<div class="panel-heading">
+								<h4 class="panel-title">
+									<a data-toggle="collapse" data-parent="#toc-accordion" href="#toc-topic-p5c5b933644bdf5b22de1eecfaa331fb9">
+          16.0 Assessment
+        </a>
+								</h4>
+							</div>
+							<div id="toc-topic-p5c5b933644bdf5b22de1eecfaa331fb9" class="panel-collapse collapse ">
+								<div class="panel-body panel-body-toc">
+									<ul class="nav nav-pills nav-stacked">
+
+
+
+										<li><a href="course.php?course_id=1472&objective_refid=o11720913001579446731063699295&topic_refid=paaad79fe2fc74129487ded7f31b0e7b9&synaptic_pathway=deductive&page_number=1&pages_to_capture=1" onClick="return gotoCoursePage(this)">8.2 Assessment</a>
+										</li>
+
+
+
+
+										<li class="divider"></li>
+										<li><a href='course.php?course_id=1472&objective_refid=o11720913001579446731063699295&topic_refid=p5c5b933644bdf5b22de1eecfaa331fb9&remediation_type=normal&show_quiz'><span class="glyphicon glyphicon-check"></span> Take Assessment</a>
+										</li>
+
+
+
+
+									</ul>
+								</div>
+							</div>
+						</div>
+
+					</div>
+
+
+				</div>
+
+				<div id="right_pane" class="col-md-9">
+					<div id='course_content'>
+						<div id="nav_course_upper">
+							<div id="manifest_compat_content">
+								<li id="course_pathways" class="dropdown">
+									<a id="current-learning-strategy" data-toggle="dropdown" class="dropdown-toggle" href="#"><span class="glyphicon glyphicon-screenshot"></span> Current Strategy: <strong>deductive</strong> <b class="caret"></b></a>
+									<ul class="dropdown-menu" role="menu">
+
+										<li>
+											<a href="course.php?course_id=1472&objective_refid=od953e7539ac5381fa430b48c1f04098b&topic_refid=pc6ff3ee590be82df0cb5a3c84ec8c2da&synaptic_pathway=incidental&page_number=1&pages_to_capture=1&1445855495"><img src='http://nsf2.intelladapt.com//templates/bootstrap/images/lsicons/incidental.png' alt='Switch to incidental' onClick="return gotoCoursePage(this)" title='Switch to incidental' />incidental</a>
+										</li>
+
+										<li>
+											<a href="course.php?course_id=1472&objective_refid=od953e7539ac5381fa430b48c1f04098b&topic_refid=pc6ff3ee590be82df0cb5a3c84ec8c2da&synaptic_pathway=inductive&page_number=1&pages_to_capture=1&1445855495"><img src='http://nsf2.intelladapt.com//templates/bootstrap/images/lsicons/inductive.png' alt='Switch to inductive' onClick="return gotoCoursePage(this)" title='Switch to inductive' />inductive</a>
+										</li>
+
+										<li class="active">
+											<a href="course.php?course_id=1472&objective_refid=od953e7539ac5381fa430b48c1f04098b&topic_refid=pc6ff3ee590be82df0cb5a3c84ec8c2da&synaptic_pathway=deductive&page_number=1&pages_to_capture=1&1445855495"><img src='http://nsf2.intelladapt.com//templates/bootstrap/images/lsicons/deductive.png' alt='Switch to deductive' onClick="return gotoCoursePage(this)" title='Switch to deductive' />deductive</a>
+										</li>
+
+										<li>
+											<a href="course.php?course_id=1472&objective_refid=od953e7539ac5381fa430b48c1f04098b&topic_refid=pc6ff3ee590be82df0cb5a3c84ec8c2da&synaptic_pathway=discovery&page_number=1&pages_to_capture=1&1445855495"><img src='http://nsf2.intelladapt.com//templates/bootstrap/images/lsicons/discovery.png' alt='Switch to discovery' onClick="return gotoCoursePage(this)" title='Switch to discovery' />discovery</a>
+										</li>
+
+										<li>
+											<a href="course.php?course_id=1472&objective_refid=od953e7539ac5381fa430b48c1f04098b&topic_refid=pc6ff3ee590be82df0cb5a3c84ec8c2da&synaptic_pathway=apprentice&page_number=1&pages_to_capture=1&1445855495"><img src='http://nsf2.intelladapt.com//templates/bootstrap/images/lsicons/apprentice.png' alt='Switch to apprentice' onClick="return gotoCoursePage(this)" title='Switch to apprentice' />apprentice</a>
+										</li>
+
+									</ul>
+								</li>
+
+								<div id="pagination" class="navbar-right">
+
+
+									<p class="navbar-text"><span class="hidden-on-mobile">Page </span>1/8</p>
+
+
+
+									<div class="btn-group">
+										<button class="btn btn-default btn-sm navbar-btn pagination-first pagination-hide" data-src="course.php?course_id=1472&objective_refid=od953e7539ac5381fa430b48c1f04098b&topic_refid=pc6ff3ee590be82df0cb5a3c84ec8c2da&synaptic_pathway=deductive&page_number=1&pages_to_capture=1&first">
+      <span class="glyphicon glyphicon-backward"></span>
+    </button>
+										<button class="btn btn-default btn-sm navbar-btn pagination-prev pagination-hide" data-src="course.php?course_id=1472&objective_refid=od953e7539ac5381fa430b48c1f04098b&topic_refid=pc6ff3ee590be82df0cb5a3c84ec8c2da&synaptic_pathway=deductive&page_number=0&pages_to_capture=1&prev">
+        <span class="glyphicon glyphicon-chevron-left"></span>
+    </button>
+										<button class="btn btn-default btn-sm navbar-btn pagination-next" data-src="course.php?course_id=1472&objective_refid=od953e7539ac5381fa430b48c1f04098b&topic_refid=pc6ff3ee590be82df0cb5a3c84ec8c2da&synaptic_pathway=deductive&page_number=2&pages_to_capture=1&next">
+      <span class="glyphicon glyphicon-chevron-right"></span>
+    </button>
+										<button class="btn btn-default btn-sm navbar-btn pagination-last" data-src="course.php?course_id=1472&objective_refid=od953e7539ac5381fa430b48c1f04098b&topic_refid=pc6ff3ee590be82df0cb5a3c84ec8c2da&synaptic_pathway=deductive&page_number=8&pages_to_capture=1&last">
+      <span class="glyphicon glyphicon-forward"></span>
+    </button>
+
+									</div>
+								</div>
+
+
+							</div>
+						</div>
+						<div id="course_content_html" class="deductive">
+
+							<meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+							<script>
+							if (document.domain.indexOf("sgleducation.com") != -1) {
+								document.domain = "sgleducation.com";
+							}
+							if (document.domain.indexOf("amol.io") != -1) {
+								document.domain = "amol.io";
+							}
+							if (document.domain.indexOf("intelladapt.com") != -1) {
+								document.domain = "intelladapt.com"
+							}
+							</script>
+							<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+							<!DOCTYPE HTML>
+							<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+							<head>
+								<title>111 Learning Objectives</title>
+								<meta charset="utf-8" />
+								<link href="http://rmedia.4dlspace.com/course_styles/MOOC_nsfp.css" rel="stylesheet" type="text/css" />
+								<link href="http://fonts.googleapis.com/css?family=Oswald:700" rel="stylesheet" type="text/css" />
+								<link href="http://fonts.googleapis.com/css?family=Noto+Serif:400,700" rel="stylesheet" type="text/css" />
+							</head>
+							<body>
+								<div id="vs_content">
+									<div class="onecol">
+										<h2>Learning Objectives</h2>
+										<p>Students will be introduced to the domain of physics and applications to everyday situations and objects.</p>
+									</div>
+								</div>
+							</body>
+							</html>
+
+						</div>
+					</div>
+				</div>
+
+
+			</div>
+		</div>
+		<!--footer.tmpl end hite_content//-->
+	</div>
+	</div>
+
+	<div id="footer" class="row">
+		<div class="container">
+			<div class="col-md-12 text-center">
+				<div class='translate_td'>
+					<div id="google_translate_element">Loading languages...</div>
+					<script language="JavaScript" type="text/javascript">
+					function googleTranslateElementInit() {
+						document.getElementById('google_translate_element').innerHTML = "";
+
+						new google.translate.TranslateElement({
+								pageLanguage: 'en',
+								autoDisplay: true,
+								layout: google.translate.TranslateElement.InlineLayout.SIMPLE
+							},
+							'google_translate_element');
+					}
+					</script>
+					<script src="http://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit" language="JavaScript" type="text/javascript"></script>
+				</div>
+			</div>
+			<div class="col-md-12 col-padding text-muted text-center">
+				Copyright <span class="glyphicon glyphicon-copyright-mark"></span> intellADAPT 2015
+			</div>
+		</div>
+	</div>
+
+
+
+
+	<script language="JavaScript" type="text/javascript">
+	var web_temp_dir = "http://nsf2.intelladapt.com//templates/bootstrap";
+	image_path = "http://nsf2.intelladapt.com//templates/bootstrap/images/";
+	</script>
+
+
+
+	<script data-main="http://nsf2.intelladapt.com//templates/bootstrap/scripts/course" src="http://nsf2.intelladapt.com//templates/bootstrap/scripts/lib/require.js"></script>
+
+
+
+	<script language="JavaScript" type="text/javascript">
+	(function(i, s, o, g, r, a, m) {
+		i['GoogleAnalyticsObject'] = r;
+		i[r] = i[r] || function() {
+			(i[r].q = i[r].q || []).push(arguments)
+		}, i[r].l = 1 * new Date();
+		a = s.createElement(o),
+		m = s.getElementsByTagName(o)[0];
+		a.async = 1;
+		a.src = g;
+		m.parentNode.insertBefore(a, m)
+	})(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
+
+	ga('create', 'UA-46157119-1', 'sgleducation.com');
+	ga('send', 'pageview');
+	</script>
+</body>
+</html>

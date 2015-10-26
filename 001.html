@@ -1,0 +1,572 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+	<title>AMOL: Login</title>
+	<meta http-equiv="content-type" content="text/html;charset=UTF-8">
+	<!-- set this first before the course content does so it doesn't prematurly render the page causing HTML to load before CSS is applied -->
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+	<!-- Bootstrap -->
+	<link href="http://nsf2.intelladapt.com//templates/bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen">
+	<link href="//code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" rel="stylesheet" media="screen">
+	<link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
+
+	<!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+	<!--[if lt IE 9]>
+	<script src="http://nsf2.intelladapt.com//templates/bootstrap/js/html5shiv.js"></script>
+	<script src="http://nsf2.intelladapt.com//templates/bootstrap/js/respond.min.js"></script>
+	<![endif]-->
+
+	<style type="text/css">
+	/*********************************************************************/
+	/* Sticky Footer */
+	/*********************************************************************/
+	html, body {
+		height: 100%;
+	}
+	body {
+		/* Fix row padding offset for fluid sites */
+		padding: 0 15px;
+	}
+	label {
+		cursor: pointer;
+	}
+	/* Wrapper for page content to push down footer */
+	#wrap {
+		min-height: 100%;
+		height: auto !important;
+		height: 100%;
+		/* Negative indent footer by its height */
+		margin: 0 auto -60px;
+		/* Pad bottom by footer height */
+		padding: 70px 0 70px;
+	}
+	/* Set the fixed height of the footer here */
+	#footer {
+		background-color: #f5f5f5;
+	}
+	#footer .container {
+		padding-top: 20px;
+	}
+	#footer {
+		background-color: #20272E;
+	}
+	/*********************************************************************/
+	/* Custom CSS */
+	/*********************************************************************/
+	@media(min-width:992px), @media(min-width:1200px) {
+		#wrap, #hite_content, #hite_content_inner {
+			display: flex;
+			display: -webkit-flex;
+			display: -ms-flex;
+		}
+		#wrap {
+			flex-direction: column;
+			-webkit-flex-direction: column;
+		}
+		#hite_content, #hite_content_inner, #right_pane {
+			flex: 1 1 auto;
+			-webkit-flex: 1 1 auto;
+			-ms-flex: 1 1 auto;
+		}
+	}
+	#hite_content_inner {
+		margin: 0 auto;
+	}
+	.page-header {
+		position: relative;
+	}
+	.page-header, .page-header h1 {
+		margin-top: 0;
+	}
+	#student-analytic-dashboard .row, .student-analytic-dashboard .row {
+		padding: 15px;
+	}
+	#student-analytic-dashboard .col-md-4, #student-analytic-dashboard .col-md-6, .student-analytic-dashboard .col-md-4, .student-analytic-dashboard .col-md-6 {
+		padding: 0;
+	}
+	#data-display-toggle, .data-display-toggle, .report_tables {
+		display: none;
+	}
+	.report_tables {
+		background: #FFF;
+		border: 3px solid #4572A7;
+		-webkit-border-radius: 7px;
+		-moz-border-radius: 7px;
+		border-radius: 7px;
+		margin: 0 0.5em 0 0.5em;
+	}
+	.report_tables h3 {
+		margin: 0.5em;
+		padding: 0;
+		font-size: 1.25em;
+		font-weight: bold;
+		text-align: center;
+	}
+	.report_tables table {
+		width: 75%;
+		margin: 1em;
+	}
+	.report_tables table th {
+		font-weight: bold;
+		text-transform: capitalize;
+		min-width: 25%;
+		border: 1px solid #000;
+	}
+	.report_tables table td {
+		border: 1px solid #000;
+	}
+	.report_tables table td.col1 {
+		text-transform: capitalize;
+	}
+	iframe {
+		width: 100%;
+		overflow: hidden;
+	}
+	.nav-main-col {
+		max-width: 100%;
+		margin: 0 auto;
+	}
+	.nav-main-col li a {
+		padding-left: 5px !important;
+		padding-right: 5px !important;
+	}
+	#current-learning-strategy strong {
+		letter-spacing: 2px;
+		text-transform: uppercase;
+	}
+	#toc-accordion {
+		padding-bottom: 10px;
+	}
+	.main-col {
+		max-width: 1024px;
+	}
+	#right_pane {
+		background-color: #fefefe;
+		box-shadow: 0px 0px 5px #999;
+		padding-top: 5px;
+	}
+	.panel-body-toc {
+		padding-left: 0px;
+		padding-right: 0px;
+	}
+	.panel-body-toc ul li.active a {
+		background-color: #678AAC !important;
+	}
+	#pagination, #course_pathways {
+		display: none;
+	}
+	.quiz-question img, .quiz-question > label {
+		display: block;
+	}
+	#remedial-pathway, .learning-style {
+		text-transform: capitalize;
+	}
+	#pagination .pagination-hide, #mpagination .pagination-hide {
+		display: none;
+	}
+	#pagination {
+		padding-right: 5px;
+	}
+	.tab-buffer {
+		margin-bottom: 10px;
+	}
+	#glossary .modal-dialog {
+		width: 900px;
+	}
+	#login-marketing {
+		background-image: url('http://nsf2.intelladapt.com//templates/bootstrap/images/nsf-login.jpg');
+		background-position: top left;
+		padding-left: 30px;
+	}
+	#login-marketing h3 {
+		color: #9ABDDF !important;
+		text-shadow: 2px 2px 1px #000;
+		padding-top: 0;
+		margin-top: 0
+	}
+	#login-marketing small {
+		color: #FFF !important;
+	}
+	.modal-backdrop {
+		background-color: #000;
+		background-color: rgba(0, 0, 0, 0.90);
+	}
+	li.hiddenformooc {
+		display: none;
+	}
+	.course-list dt {
+		width: 50%;
+		text-align: left;
+	}
+	.course-list dd {
+		width: 50%;
+		margin-left: 50%;
+		text-align: right;
+	}
+	.openanswer {
+		width: 130px;
+		display: inline-block;
+	}
+	.quiz-question ol * {
+		font-weight: 400 !important;
+	}
+	.quiz-question-control p {
+		margin-top: -6px;
+	}
+	.quiz-result-chart {
+		margin-left: auto;
+		margin-right: auto;
+	}
+	#iframe-modal .modal-dialog {
+		width: 940px;
+	}
+	#iframe-modal #iframe-cont {
+		overflow: hidden;
+	}
+	#avatar_helper {
+		position: fixed;
+		/* It's possible this could become hairy to keep track of */
+		bottom: 10px;
+		/* 60px for footer - (20+2+10+18)px for transcript button */
+		left: 0px;
+		text-align: center;
+		cursor: pointer;
+	}
+	#avatar_helper #avatar_helper_btn_bg {
+		background: #20272E;
+	}
+	#avatar_helper #avatar_helper_video {
+		width: 180px;
+		height: 200px;
+	}
+	.chartholder {
+		text-align:center;
+	}
+	#activity-pagination {
+		text-align:center;
+		padding-top:1em;
+	}
+	.pagination>li>a {
+		padding: 6px 7px;
+	}
+	.quiz-page-done {
+		font-size: 0.5em;
+	}
+	.report-content table caption {
+		visibility: hidden;
+	}
+	#reports-progress ul {
+		list-style-type: none;
+		padding-top: 0.4em;
+		padding-bottom: 0.4em;
+	}
+	#reports-progress .course-progress {
+		width: 300px;
+		margin-bottom: 0.5em;
+		margin-right: 1em;
+		vertical-align: bottom;
+		display: inline-block;
+	}
+	#reports-progress .panel-collapse ul {
+		padding-left: 0.2em;
+	}
+	#reports-progress .led {
+		width: 10px;
+		height: 10px;
+		margin: 6px;
+	}
+	#reports-progress #taskkey:before {
+		content:'Legend: ';
+	}
+	#reports-progress #taskkey {
+		text-align: center;
+		padding: 1em;
+	}
+	#reports-progress #taskkey li {
+		display: inline;
+	}
+	.needanswer {
+		background: #d9edf7;
+		border: 1px solid #fbeed5;
+		border-radius: 1em;
+		margin-left: 0.25em;
+		margin-right: 0.25em;
+	}
+	#nsf-report-table {
+		/*height: 300px;
+			overflow: auto;*/
+	}
+	#nsf-report-table table {
+		width: 100%;
+	}
+	#nsf-report-table td, #nsf-report-table th {
+		text-align: center;
+		border: 1px solid #000;
+	}
+	#nsf-report-table .even {
+		background: #FFF;
+	}
+	#nsf-report-table .odd {
+		background: #DDD;
+	}
+	/**/
+	#nsf-report-table .highlight_1.even {
+		background: #FFC7CE;
+	}
+	#nsf-report-table .highlight_1.odd {
+		background: #DDAFB5;
+	}
+	/**/
+	#nsf-report-table .highlight_2.even {
+		background: #FFEB9C;
+	}
+	#nsf-report-table .highlight_2.odd {
+		background: #DDCB89;
+	}
+	/**/
+	#nsf-report-table .highlight_3.even {
+		background: #A9D08E;
+	}
+	#nsf-report-table .highlight_3.odd {
+		background: #8EAD77;
+	}
+	/**/
+	#nsf-report-table .highlight_4.even {
+		background: #ADD8FF;
+	}
+	#nsf-report-table .highlight_4.odd {
+		background: #96BCDD;
+	}
+	.last-name-filter-highlight {
+		color: red;
+		font-weight: bold;
+	}
+	#QUESTION_CONTENT iframe {
+		width: auto;
+	}
+	.postauthor h4 {
+		margin-top: 0;
+		text-transform: capitalize;
+	}
+	.ucform fieldset legend {
+		display: none;
+	}
+	#accordion-assignment-users .panel-title a, .sidebar_buttons a {
+		display: block;
+	}
+	#accordion-assignment-users .panel-title .led {
+		vertical-align: baseline;
+		margin-right: 0.5em;
+	}
+	#accordion-assignment-users .panel-title .item-avatar {
+		vertical-align: top;
+	}
+	#accordion-assignment-users .panel-title .progress-block {
+		font-size: 0.9em;
+		color: #999;
+	}
+	#accordion-assignment-users .panel-title .progress {
+		display: inline-block;
+		width: 10em;
+		margin-bottom: 0em;
+		vertical-align: bottom;
+	}
+	.assignment-buttons {
+		text-align: center;
+	}
+	.assignment-buttons li {
+		margin-bottom: 0.5em;
+	}
+	.assignment-buttons li .btn-half {
+		width: 40%;
+	}
+	.assignment-buttons li .btn-full {
+		width: 80%;
+	}
+	.datetimepicker.form-control {
+		background-color: #FFF;
+		cursor: default;
+	}
+	@media all and (max-width: 991px) {
+		#avatar_helper {
+			display: none;
+		}
+	}
+	.col-padding {
+		padding: 0.5em;
+	}
+	#left_pane {
+		max-height: inherit;
+	}
+	.navbar-toggle {
+		color: #fff;
+	}
+	.navbar-text {
+		margin-bottom: 0px;
+	}
+	@media (max-width:767px) {
+		#wrap {
+			/*padding: 60px 0 45px;*/
+		}
+		.container {
+			padding:0;
+		}
+		#right_pane {
+			box-shadow:none;
+			padding:0.75em;
+		}
+		body {
+			background-color: #fefefe;
+		}
+	}
+	.goog-te-banner-frame, .goog-tooltip {
+		visibility: hidden !important;
+		display: none !important;
+	}
+	.goog-text-highlight {
+		background-color: transparent !important;
+		box-shadow: none !important;
+	}
+	#main-nav-container.navbar-collapse.in {
+		overflow-y: visible;
+	}
+	@media (max-width:992px) {
+		#main-nav-container.navbar-collapse.in, #main-nav-container.navbar-collapse.collapsing {
+			float: none !important;
+		}
+	}
+	#mobile-pagination-container:hover {
+		background: transparent;
+	}
+	#mobile-pagination-container .hidden-on-mobile {
+		display: none;
+	}
+	#mobile-pagination-container {
+		padding: 0px;
+		margin-top: 0px;
+		margin-bottom: 0px;
+		border: 0px;
+	}
+	#mpagination p {
+		display: inline;
+		padding-right: 0.1em;
+		vertical-align: middle;
+	}
+	.navbar-brand {
+		padding: 15px 7px;
+	}
+	.useravatar {
+		height: 128px;
+	}
+	</style>
+
+	<style id="dynamic-style">
+
+	</style>
+</head>
+
+<body>
+	<div id="wrap">
+		<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+			<div class="nav-main-col">
+				<!-- Brand and toggle get grouped for better mobile display -->
+				<div class="navbar-header"> <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse"> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button>  <a class="navbar-brand" href="#">intellADAPT</a>
+				</div>
+				<!-- Collect the nav links, forms, and other content for toggling -->
+				<div class="pull-left collapse navbar-collapse navbar-ex1-collapse">
+					<ul class="nav navbar-nav">
+						<li><a href="#">Contact Us</a>
+						</li>
+						<li><a href="#">Help</a>
+						</li>
+					</ul>
+				</div>
+				<!-- /.navbar-collapse -->
+			</div>
+		</nav>
+
+		<div id="hite_content" class="row">
+			<div id="hite_content_inner" class="container main-col">
+				<div class="col-md-12">
+
+
+
+					<div id="login-marketing" class="jumbotron">
+						<h3>Mastering Fundamentals of Physics
+							<br />
+							<small>&nbsp;&nbsp;&nbsp;&nbsp; An Adaptive course taught by Dr. Nish Sonwalkar</small>
+						</h3>
+					</div>
+
+					<div class="row">
+						<div class="col-md-8 col-md-offset-2">
+							<p class="lead">The course will prepare you for concepts related to <strong>Advanced&nbsp;Placement&nbsp;&#174;&nbsp;(AP)</strong>  <em>Physics I</em> and <em>II</em> and concepts that are covered in the first course in college physics.</p>
+							<p class="lead">Please sign in.</p>
+						</div>
+					</div>
+
+
+					<div class="row">
+						<div class="col-md-12">
+							<form class="form-horizontal" role="form" action="index.php" method="post" id="login">
+								<div class="form-group">
+									<label for="username" class="col-sm-2 control-label">Email</label>
+									<div class="col-sm-10">
+										<input class="form-control" maxlength="255" type="text" name="username" id="username" placeholder="Email" title="Type in your email address that you registered with." required />
+									</div>
+								</div>
+
+
+								<div class="form-group">
+									<label for="password" class="col-sm-2 control-label">Password</label>
+									<div class="col-sm-10">
+										<input class="form-control" maxlength="255" type="password" name="password" id="password" placeholder="Password" title="Type in your password." required />
+									</div>
+								</div>
+
+
+
+								<input type="hidden" name="act" value="login" />
+
+
+								<div class="form-group">
+									<div class="col-sm-offset-2 col-sm-10">
+										<a class="btn btn-success" href="002_welcome_student.html">Sign in</a>
+									</div>
+								</div>
+
+								<div class="pull-right">
+
+									<a class="btn btn-primary" href="#">Need an account? Click here.</a>
+
+
+									<a class="btn btn-info" href="#">Forgot your password? Click here.</a>
+
+								</div>
+							</form>
+						</div>
+					</div>
+
+
+				</div>
+			</div>
+
+		</div>
+		<!--footer.tmpl end hite_content//-->
+	</div>
+
+	</div>
+
+	<div id="footer" class="row">
+		<div class="container">
+			<p class="text-muted text-center">Copyright <span class="glyphicon glyphicon-copyright-mark"></span> intellADAPT 2015</p>
+		</div>
+	</div>
+	<script language="JavaScript" type="text/javascript">
+	var web_temp_dir = "http://nsf2.intelladapt.com//templates/bootstrap";
+	image_path = "http://nsf2.intelladapt.com//templates/bootstrap/images/";
+	</script>
+	<script data-main="http://nsf2.intelladapt.com//templates/bootstrap/scripts/generic" src="http://nsf2.intelladapt.com//templates/bootstrap/scripts/lib/require.js"></script>
+</body>
+</html>
