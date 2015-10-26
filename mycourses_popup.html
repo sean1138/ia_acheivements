@@ -474,18 +474,20 @@
 
 	<!-- IFRAME MODAL -->
 	<style>
+	.modal-lg {
+		max-width: 900px;
+	}
+	@media (max-width: 768px) {
 		.modal-lg {
-		  max-width: 900px;}
-		@media (max-width: 768px) {
-		   .modal-lg {
-		    width: 95%;/* magic number */
-		  }
+			width: 95%;
+			/* magic number */
 		}
-		@media (min-width: 992px) {
-		  .modal-lg {
-		    width: 900px;
-		  }
+	}
+	@media (min-width: 992px) {
+		.modal-lg {
+			width: 900px;
 		}
+	}
 	</style>
 	<script>
 	// $(window).load(function() {
@@ -494,6 +496,7 @@
 	setTimeout(function() {
 		$('#modal-achievements').modal('show');
 	}, 500);
+	// should popup on page load, doesn't always work
 	</script>
 	<div class="modal fade" id="modal-achievements" tabindex="-1" role="dialog" aria-labelledby="iframe-modal-title">
 		<div class="modal-dialog modal-lg">
@@ -524,8 +527,8 @@
 								zoom: 1;
 								margin: 3px;
 								padding: 0 .5em;
-								height: 176px;
-								width: 176px;
+								/*height: 176px;*/
+								width: 208px;
 								border: 1px rgba(0, 0, 0, .1) solid;
 								border-color:black;
 								-webkit-border-radius: 1em;
@@ -537,43 +540,85 @@
 								text-align: center;
 								text-indent:0;
 							}
-							.LSlist .LS_app{
-								border-color:rgba(137,137,137,.5);/*grey*/
-								background-color:rgba(137,137,137,.25);
+							.LSlist .LS_app {
+								border-color:rgba(137, 137, 137, .5);
+								/*grey*/
+								background-color:rgba(137, 137, 137, .25);
 							}
-							.LSlist .LS_inc{
-								border-color:rgba(137,255,137,.5);/*green*/
-								background-color:rgba(137,255,137,.25);
+							.LSlist .LS_inc {
+								border-color:rgba(137, 255, 137, .5);
+								/*green*/
+								background-color:rgba(137, 255, 137, .25);
 							}
-							.LSlist .LS_ind{
-								border-color:rgba(200,200,255,.75);/*blue*/
-								background-color:rgba(200,200,255,.5);
+							.LSlist .LS_ind {
+								border-color:rgba(200, 200, 255, .75);
+								/*blue*/
+								background-color:rgba(200, 200, 255, .5);
 							}
-							.LSlist .LS_ded{
-								border-color:rgba(255,171,255,.5);/*magenta*/
-								background-color:rgba(255,171,255,.25);
+							.LSlist .LS_ded {
+								border-color:rgba(255, 171, 255, .5);
+								/*magenta*/
+								background-color:rgba(255, 171, 255, .25);
 							}
-							.LSlist .LS_dis{
-								border-color:rgba(255,185,185,.75);/*red*/
-								background-color:rgba(255,185,185,.5);
+							.LSlist .LS_dis {
+								border-color:rgba(255, 185, 185, .75);
+								/*red*/
+								background-color:rgba(255, 185, 185, .5);
 							}
-							.LSlist .selected{
-								-webkit-box-shadow: inset 0px 0px 8px 1px #ffff00; /* Android 2.3+, iOS 4.0.2-4.2, Safari 3-4 */
-								box-shadow: inset 0px 0px 8px 1px #ffff00; /* Chrome 6+, Firefox 4+, IE 9+, iOS 5+, Opera 10.50+ */
+							.LSlist .selected {
+								-webkit-box-shadow: inset 0px 0px 8px 1px #ffff00;
+								/* Android 2.3+, iOS 4.0.2-4.2, Safari 3-4 */
+								box-shadow: inset 0px 0px 8px 1px #ffff00;
+								/* Chrome 6+, Firefox 4+, IE 9+, iOS 5+, Opera 10.50+ */
 							}
 							</style>
 							<ul class="LSlist">
-								<li class="LS_app selected">apprentice</li>
-								<li class="LS_inc">incidental</li>
-								<li class="LS_ind">inductive</li>
-								<li class="LS_ded">deductive</li>
-								<li class="LS_dis">discovery</li>
+								<li class="LS_app selected" title="selected learning strategy, 100% complete">
+									<p>apprentice</p><img src="star160_100.png" alt="" width="160" height="160" />
+									<div class="progress">
+									  <div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 100%;">
+									    100%
+									  </div>
+									</div>
+								</li>
+								<li class="LS_inc" title="0% complete">
+									<p>incidental</p><img src="star160_0.png" alt="" width="160" height="160" />
+									<div class="progress">
+									  <div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 0%;">
+									    0%
+									  </div>
+									</div>
+								</li>
+								<li class="LS_ind" title="25% complete">
+									<p>inductive</p><img src="star160_25.png" alt="" width="160" height="160" />
+									<div class="progress">
+									  <div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 25%;">
+									    25%
+									  </div>
+									</div>
+								</li>
+								<li class="LS_ded" title="50% complete">
+									<p>deductive</p><img src="star160_50.png" alt="" width="160" height="160" />
+									<div class="progress">
+									  <div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 50%;">
+									    50%
+									  </div>
+									</div>
+								</li>
+								<li class="LS_dis" title="75% complete">
+									<p>discovery</p><img src="star160_75.png" alt="" width="160" height="160" />
+									<div class="progress">
+									  <div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 75%;">
+									    75%
+									  </div>
+									</div>
+								</li>
 							</ul>
 						</div>
 					</div>
 				</div>
 				<div class="modal-footer">
-
+					<a href="002_welcome_student.html" class="btn btn-default" data-link-to="welcome-page">What's this?</a>
 					<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
 				</div>
 			</div>
