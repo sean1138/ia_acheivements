@@ -466,14 +466,15 @@
 	.LSlistV {
 		list-style: none;
 		position: relative;
-		margin: 12em auto 11em;
+		margin: 7em auto 7em;
 		padding: 0;
 		width: 256px;
 		height: 256px;
 		border-radius: 50%;
 		background: url('http://nsf2-dev.intelladapt.com//templates/bootstrap-lsdash/images/lsdash/circular_arrows.png') no-repeat 50% 50%;
+		background-size:65%;
 		font-size:16px;
-		/* changing this is a BAD IDEA */
+		/* changing the font-size is a BAD IDEA */
 	}
 	@media(max-width:991px) {
 		.LSlistV {
@@ -497,8 +498,14 @@
 		left: 50%;
 		margin: -3em;
 		padding:.25em .5em;
-		width: 6.5em;
+		width: 7em;
 		border:1px solid black;
+	}
+	.LSlistV .vstar{
+		height:48px;
+		width:48px;
+		display:block;
+		margin:0 auto;
 	}
 	.LSlistV > li:nth-of-type(1) {
 		/* top */
@@ -506,9 +513,9 @@
 		/*app*/
 		background-color:rgba(137, 137, 137, .25);
 		/*app*/
-		-webkit-transform: rotate(-90deg) translate(16.5em) rotate(90deg);
-		-ms-transform: rotate(-90deg) translate(16.5em) rotate(90deg);
-		transform: rotate(-90deg) translate(16.5em) rotate(90deg);
+		-webkit-transform: rotate(-90deg) translate(11.5em) rotate(90deg);
+		-ms-transform: rotate(-90deg) translate(11.5em) rotate(90deg);
+		transform: rotate(-90deg) translate(11.5em) rotate(90deg);
 	}
 	.LSListVWelcome > li:nth-of-type(1) {
 		-webkit-transform: rotate(-90deg) translate(9em) rotate(90deg);
@@ -521,9 +528,9 @@
 		/*ded*/
 		background-color:rgba(255, 171, 255, .5);
 		/*ded*/
-		-webkit-transform: rotate(132deg) translate(12em) rotate(-132deg);
-		-ms-transform: rotate(132deg) translate(12em) rotate(-132deg);
-		transform: rotate(132deg) translate(12em) rotate(-132deg);
+		-webkit-transform: rotate(132deg) translate(10.5em) rotate(-132deg);
+		-ms-transform: rotate(132deg) translate(10.5em) rotate(-132deg);
+		transform: rotate(132deg) translate(10.5em) rotate(-132deg);
 	}
 	.LSlistV > li:nth-of-type(3) {
 		/* bottom right */
@@ -531,9 +538,9 @@
 		/*ind*/
 		background-color:rgba(200, 200, 255, .5);
 		/*ind*/
-		-webkit-transform: rotate(54deg) translate(11em) rotate(-54deg);
-		-ms-transform: rotate(54deg) translate(11em) rotate(-54deg);
-		transform: rotate(54deg) translate(11em) rotate(-54deg);
+		-webkit-transform: rotate(54deg) translate(9.5em) rotate(-54deg);
+		-ms-transform: rotate(54deg) translate(9.5em) rotate(-54deg);
+		transform: rotate(54deg) translate(9.5em) rotate(-54deg);
 	}
 	.LSlistV > li:nth-of-type(4) {
 		/* middle right */
@@ -541,9 +548,9 @@
 		/*dis*/
 		background-color:rgba(255, 185, 185, .5);
 		/*dis*/
-		-webkit-transform: rotate(198deg) translate(12em) rotate(-198deg);
-		-ms-transform: rotate(198deg) translate(12em) rotate(-198deg);
-		transform: rotate(198deg) translate(12em) rotate(-198deg);
+		-webkit-transform: rotate(198deg) translate(11em) rotate(-198deg);
+		-ms-transform: rotate(198deg) translate(11em) rotate(-198deg);
+		transform: rotate(198deg) translate(11em) rotate(-198deg);
 	}
 	.LSlistV > li:nth-of-type(5) {
 		/* middle left */
@@ -551,9 +558,9 @@
 		/*inc*/
 		background-color:rgba(137, 255, 137, .5);
 		/*inc*/
-		-webkit-transform: rotate(-20deg) translate(11em) rotate(20deg);
-		-ms-transform: rotate(-20deg) translate(11em) rotate(20deg);
-		transform: rotate(-20deg) translate(11em) rotate(20deg);
+		-webkit-transform: rotate(-20deg) translate(9.5em) rotate(20deg);
+		-ms-transform: rotate(-20deg) translate(9.5em) rotate(20deg);
+		transform: rotate(-20deg) translate(9.5em) rotate(20deg);
 	}
 	.LSlistV > li:last-child {
 		border:none;
@@ -861,9 +868,9 @@
 					</div>
 
 					<ul class="LSlistV">
-						<li class="LS_app" title="14% complete">
+						<li class="LS_app" title="14% competency">
 							<strong>Apprentice:</strong> Step-by-step
-							<br /><img src="http://nsf2-dev.intelladapt.com//templates/bootstrap-lsdash/images/lsdash/star160_100.png" alt="" width="80" height="80" />
+							<br /><img src="http://nsf2-dev.intelladapt.com//templates/bootstrap-lsdash/images/lsdash/star160_100.png" alt="" class="vstar" />
 
 							<div class="progress">
 								<div class="progress-bar" role="progressbar" aria-valuenow="14" aria-valuemin="0" aria-valuemax="100" style="width: 14%;">
@@ -874,7 +881,7 @@
 						</li>
 						<li class="LS_ded" title="23% competency">
 							<strong>Deductive:</strong> Interaction
-							<br /><img src="http://nsf2-dev.intelladapt.com//templates/bootstrap-lsdash/images/lsdash/star160_100.png" alt="" width="80" height="80" />
+							<br /><img src="http://nsf2-dev.intelladapt.com//templates/bootstrap-lsdash/images/lsdash/star160_100.png" alt="" class="vstar" />
 
 							<div class="progress">
 								<div class="progress-bar" role="progressbar" aria-valuenow="23" aria-valuemin="0" aria-valuemax="100" style="width: 23%;">
@@ -887,7 +894,7 @@
 
 						<li class="LS_ind" title="3% competency">
 							<strong>Inductive:</strong> Examples
-							<br /><img src="http://nsf2-dev.intelladapt.com//templates/bootstrap-lsdash/images/lsdash/star160_100.png" alt="" width="80" height="80" />
+							<br /><img src="http://nsf2-dev.intelladapt.com//templates/bootstrap-lsdash/images/lsdash/star160_100.png" alt="" class="vstar" />
 
 							<div class="progress">
 								<div class="progress-bar" role="progressbar" aria-valuenow="3" aria-valuemin="0" aria-valuemax="100" style="width: 3%;">
@@ -901,7 +908,7 @@
 
 						<li class="LS_dis" title="14% competency">
 							<strong>Discovery:</strong> Games
-							<br /><img src="http://nsf2-dev.intelladapt.com//templates/bootstrap-lsdash/images/lsdash/star160_100.png" alt="" width="80" height="80" />
+							<br /><img src="http://nsf2-dev.intelladapt.com//templates/bootstrap-lsdash/images/lsdash/star160_100.png" alt="" class="vstar" />
 
 							<div class="progress">
 								<div class="progress-bar" role="progressbar" aria-valuenow="14" aria-valuemin="0" aria-valuemax="100" style="width: 14%;">
@@ -913,7 +920,7 @@
 
 						<li class="LS_inc selected" title="Selected Learning Strategy 14% competency" data-href="course.php?course_id=1472">
 							<strong>Incidental:</strong> Case study
-							<br /><img src="http://nsf2-dev.intelladapt.com//templates/bootstrap-lsdash/images/lsdash/star160_100.png" alt="" width="80" height="80" />
+							<br /><img src="http://nsf2-dev.intelladapt.com//templates/bootstrap-lsdash/images/lsdash/star160_100.png" alt="" class="vstar" />
 
 							<div class="progress">
 								<div class="progress-bar" role="progressbar" aria-valuenow="14" aria-valuemin="0" aria-valuemax="100" style="width: 14%;">
