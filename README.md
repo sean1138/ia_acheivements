@@ -1,4 +1,4 @@
-# ia_acheivements
+# ia_achievements
 
 LEARNING STRATEGY COLORS based on intended difficulty level
 * app = easiest, no color (grey) #ccc
