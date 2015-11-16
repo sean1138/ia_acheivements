@@ -499,7 +499,7 @@
 		margin: -3em;
 		padding:.25em .5em;
 		width: 7em;
-		border:1px solid black;
+		border:1px solid transparent;
 	}
 	.LSlistV .vstar {
 		height:48px;
@@ -509,9 +509,9 @@
 	}
 	.LSlistV > li:nth-of-type(1) {
 		/* top */
-		border-color:hsla(66, 100%, 50%, 1);
+		/*border-color:hsla(66, 100%, 50%, 1);*/
 		/*app*/
-		background-color:hsla(66, 100%, 50%, .25);
+		background-color:#CDDC39;
 		/*app*/
 		-webkit-transform: rotate(-90deg) translate(11.5em) rotate(90deg);
 		-ms-transform: rotate(-90deg) translate(11.5em) rotate(90deg);
@@ -524,39 +524,42 @@
 	}
 	.LSlistV > li:nth-of-type(2) {
 		/* bottom left */
-		border-color:hsla(291, 100%, 50%, 1);
+		/*border-color:hsla(291, 78%, 35%, 1);*/
 		/*ded*/
-		background-color:hsla(291, 100%, 50%, .5);
+		background-color:#9C27B0;
 		/*ded*/
+		color:white;
 		-webkit-transform: rotate(132deg) translate(10.5em) rotate(-132deg);
 		-ms-transform: rotate(132deg) translate(10.5em) rotate(-132deg);
 		transform: rotate(132deg) translate(10.5em) rotate(-132deg);
 	}
 	.LSlistV > li:nth-of-type(3) {
 		/* bottom right */
-		border-color:hsla(207, 100%, 50%, 1);
+		/*border-color:hsla(207, 86%, 48%, 1);*/
 		/*ind*/
-		background-color:hsla(207, 100%, 50%, .5);
+		background-color:#2196F3;
 		/*ind*/
+		color:white;
 		-webkit-transform: rotate(54deg) translate(9.5em) rotate(-54deg);
 		-ms-transform: rotate(54deg) translate(9.5em) rotate(-54deg);
 		transform: rotate(54deg) translate(9.5em) rotate(-54deg);
 	}
 	.LSlistV > li:nth-of-type(4) {
 		/* middle right */
-		border-color:hsla(4, 100%, 50%, 1);
+		/*border-color:hsla(4, 78%, 47%, 1);*/
 		/*dis*/
-		background-color:hsla(4, 100%, 50%, .5);
+		background-color:#F44336;
 		/*dis*/
+		color:white;
 		-webkit-transform: rotate(198deg) translate(11em) rotate(-198deg);
 		-ms-transform: rotate(198deg) translate(11em) rotate(-198deg);
 		transform: rotate(198deg) translate(11em) rotate(-198deg);
 	}
 	.LSlistV > li:nth-of-type(5) {
 		/* middle left */
-		border-color:hsla(122, 100%, 50%, 1);
+		/*border-color:hsla(122, 57%, 34%, 1);*/
 		/*inc*/
-		background-color:hsla(122, 100%, 50%, .5);
+		background-color:#4CAF50;
 		/*inc*/
 		-webkit-transform: rotate(-20deg) translate(9.5em) rotate(20deg);
 		-ms-transform: rotate(-20deg) translate(9.5em) rotate(20deg);
@@ -612,28 +615,31 @@
 			margin-top:5px;
 		}
 		.LSlistW .LS_app {
-			background-color:hsla(66, 100%, 50%, .25);
+			background-color:#CDDC39;
 			border-color:hsla(66, 100%, 50%, .5);
 			/*grey*/
 		}
 		.LSlistW .LS_inc {
-			background-color:hsla(122, 100%, 50%, .25);
-			border-color:hsla(122, 100%, 50%, .5);
+			background-color:hsla(122, 57%, 34%, .25);
+			border-color:hsla(122, 57%, 34%, .5);
 			/*green*/
 		}
 		.LSlistW .LS_ind {
-			background-color:hsla(207, 100%, 50%, .5);
-			border-color:hsla(207, 100%, 50%, .75);
+			background-color:#2196F3;
+			border-color:hsla(207, 86%, 48%, .75);
+			color:white;
 			/*blue*/
 		}
 		.LSlistW .LS_ded {
-			background-color:hsla(291, 100%, 50%, .25);
-			border-color:hsla(291, 100%, 50%, .5);
-			/*magenta*/
+			background-color:#9C27B0;
+			border-color:hsla(291, 78%, 35%, .5);
+			color:white;
+			/*purple*/
 		}
 		.LSlistW .LS_dis {
-			background-color:hsla(4, 100%, 50%, .5);
-			border-color:hsla(4, 100%, 50%, .75);
+			background-color:#F44336;
+			border-color:hsla(4, 78%, 47%, .75);
+			color:white;
 			/*red*/
 		}
 		.LSlistW p {
@@ -677,27 +683,30 @@
 		.LSlistM .LS_app {
 			border-color:hsla(66, 100%, 50%, .5);
 			/*grey*/
-			background-color:hsla(66, 100%, 50%, .25);
+			background-color:#CDDC39);
 		}
 		.LSlistM .LS_inc {
-			border-color:hsla(122, 100%, 50%, .5);
+			border-color:hsla(122, 57%, 34%, .5);
 			/*green*/
-			background-color:hsla(122, 100%, 50%, .25);
+			background-color:hsla(122, 57%, 34%, .25);
 		}
 		.LSlistM .LS_ind {
-			border-color:hsla(207, 100%, 50%, .75);
+			border-color:hsla(207, 86%, 48%, .75);
 			/*blue*/
-			background-color:hsla(207, 100%, 50%, .5);
+			background-color:#2196F3;
+			color:white;
 		}
 		.LSlistM .LS_ded {
-			border-color:hsla(291, 100%, 50%, .5);
-			/*magenta*/
-			background-color:hsla(291, 100%, 50%, .25);
+			border-color:hsla(291, 78%, 35%, .5);
+			/*purple*/
+			background-color:#9C27B0;
+			color:white;
 		}
 		.LSlistM .LS_dis {
-			border-color:hsla(4, 100%, 50%, .75);
+			border-color:hsla(4, 78%, 47%, .75);
 			/*red*/
-			background-color:hsla(4, 100%, 50%, .5);
+			background-color:#F44336;
+			color:white;
 		}
 		.LSlistM .selected {
 			-webkit-box-shadow: inset 0px 0px 36px 1px #7571B4;
