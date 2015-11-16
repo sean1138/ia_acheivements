@@ -16,7 +16,7 @@ more saturation hsl values my_adaptive_achievements_c
 * dis = hardest = red 0, 100%, 50%
 
 more saturation hsl values based on equally spaced hue values (red 0 = dis) my_adaptive_achievements_d
-* app = easiest, yellow/green 72, 0%, 53%
+* app = easiest, yellow/green 72, 100%, 50%
 * inc = still easy = lime green 144, 100%, 50%
 * ind = a little harder = blue 216, 100%, 50%
 * ded = hard = purple 288, 100%, 50%
